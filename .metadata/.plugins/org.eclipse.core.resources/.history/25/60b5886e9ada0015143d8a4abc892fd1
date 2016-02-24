@@ -1,0 +1,19 @@
+package com.ktds.jgbaek.dao;
+
+import java.sql.Connection;
+import java.util.List;
+
+public class EmployeesDAO {
+	//data access os
+	
+	public List<EmployeesVO> getAllEmployees() {
+		
+		Connection conn = null;
+		
+		List<EmployeesVO> employees = new ArrayList<EmployeesVO>();
+		
+		return employees;
+		
+	}
+
+}
