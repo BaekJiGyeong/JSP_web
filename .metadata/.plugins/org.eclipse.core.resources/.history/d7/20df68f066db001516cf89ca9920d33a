@@ -1,0 +1,58 @@
+package com.ktds.jgbaek.vo;
+
+public class MovieVO {
+	
+//	MOVIE_ID	NUMBER
+//	TITLE	VARCHAR2(300 BYTE)
+//	RATE	NUMBER
+//	RUNNING_TIME	VARCHAR2(5 BYTE)
+//	OPEN_DATE	DATE
+//	GRADE_ID	NUMBER
+
+	private int movieId;
+	private String title;
+	private int rate;
+	private String runningTime;
+	private String openDate;
+	private int gradeId;
+	
+	
+	public int getMovieId() {
+		return movieId;
+	}
+	public void setMovieId(int movieId) {
+		this.movieId = movieId;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getRate() {
+		return rate;
+	}
+	public void setRate(int rate) {
+		this.rate = rate;
+	}
+	public String getRunningTime() {
+		return runningTime;
+	}
+	public void setRunningTime(String runningTime) {
+		this.runningTime = runningTime;
+	}
+	public String getOpenDate() {
+		return openDate;
+	}
+	public void setOpenDate(String openDate) {
+		this.openDate = openDate;
+	}
+	public int getGradeId() {
+		return gradeId;
+	}
+	public void setGradeId(int gradeId) {
+		this.gradeId = gradeId;
+	}
+	
+	
+}

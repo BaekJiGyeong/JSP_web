@@ -30,6 +30,7 @@ public class EmployeesDAO {
 		try {
 			//DB에 연결함
 			conn = DriverManager.getConnection(Const.DB_URL, Const.DB_USER, Const.DB_PASSWORD);
+			// conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "MOVIE", "MOVIE");
 			
 			String query = " SELECT * FROM EMPLOYEES ";
 			// Query를 실행할 준비를 함

@@ -1,0 +1,22 @@
+package com.ktds.jgbaek.dao;
+
+import java.util.List;
+
+import com.ktds.jgbaek.vo.GenreVO;
+
+public class GenreDAO {
+	
+	public List<GenreVO> getAllGenre() {
+		
+		return null;
+	}
+	
+	
+	public List<GenreVO> getGenresByMovieId ( int movieId) {
+		
+		return null;
+	}
+	
+	
+
+}

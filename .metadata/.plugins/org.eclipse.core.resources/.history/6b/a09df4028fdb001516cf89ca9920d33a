@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query>
+	<movie>
+		<getAllMovie>
+			SELECT  M.*
+                   , G.GRADE_TITLE
+                   , AC.ACTOR_COUNT
+        	 FROM    MOVIE M
+                 , GRADE G
+                 , (
+                          SELECT  MOVIE_ID
+                                  , COUNT(ACTOR_LIST_ID) ACTOR_COUNT
+                          FROM    ACTOR_LIST
+                          GROUP   BY MOVIE_ID 
+                       ) AC
+      	   WHERE   M.GRADE_ID = G.GRADE_ID
+       	   AND     AC.MOVIE_ID(+) = M.MOVIE_ID
+		</getAllMovie>
+		
+		<getOneMovieInfoByMovieId>
+		/*범위 주석*/
+		SELECT  M.*
+                   , G.GRADE_TITLE
+        	 FROM    MOVIE M
+                 , GRADE G
+      	   WHERE   M.GRADE_ID = G.GRADE_ID
+      	   AND M.MOVIE_ID = ?
+		</getOneMovieInfoByMovieId>
+	</movie>
+	
+	
+</query>

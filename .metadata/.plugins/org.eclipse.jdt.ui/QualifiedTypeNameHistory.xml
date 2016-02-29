@@ -15,7 +15,8 @@
 <fullyQualifiedTypeName name="com.ktds.jgbaek.vo.JobsVO"/>
 <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 <fullyQualifiedTypeName name="com.ktds.jgbaek.dao.LocationsDAO"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="java.sql.DriverManager"/>
-<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.ktds.jgbaek.util.xml.XML"/>
 </qualifiedTypeNameHistroy>
