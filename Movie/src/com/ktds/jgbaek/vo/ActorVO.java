@@ -1,6 +1,6 @@
 package com.ktds.jgbaek.vo;
 
-public class ActorVO {
+public class ActorVO extends MovieVO{
 	
 	private int actorId;
 	private String actorName;

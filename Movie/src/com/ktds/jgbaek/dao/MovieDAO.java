@@ -96,6 +96,59 @@ public class MovieDAO {
 		return movie;
 	}
 	
+	public int insertNewMovie( MovieVO movie ) {
+		
+		int insertCount = 0;
+		
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "MOVIE", "MOVIE");
+			String query = XML.getNodeString("//query/movie/insertNewMovie/text()");
+			stmt = conn.prepareStatement(query);
+			
+			//SQL Parameter Mapping
+			//몇번째 물음표를 어디파라미터에 넣을 것인가?
+			stmt.setString(1, movie.getTitle());
+			stmt.setDouble(2, movie.getRate());
+			stmt.setString(3, movie.getRunningTime());
+			stmt.setString(4, movie.getOpenDate());
+			stmt.setInt(5, movie.getGradeId());
+			
+			insertCount = stmt.executeUpdate();
+			
+			// 영화 1건이 insert 되었다.
+			if( insertCount > 0 ){
+				
+				stmt.close();
+				//close
+				String query1 = XML.getNodeString("//query/movie/getLatesMovieId/text()");
+				stmt = conn.prepareStatement(query1);
+				
+				ResultSet rs = stmt.executeQuery();
+				
+				int movieId = 0;
+				
+				if ( rs.next() ) {
+					movieId = rs.getInt(1);
+				}				
+				
+				rs.close();
+				return movieId;
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);
+		}
+		return insertCount;
+		
+	}
+	
 	private void loadOracleDriver() {
 		
 		try {

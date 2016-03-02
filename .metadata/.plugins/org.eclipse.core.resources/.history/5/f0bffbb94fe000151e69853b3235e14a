@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query>
+	<movie>
+		<getAllMovie>
+			SELECT M.*
+			, G.GRADE_TITLE
+			, AC.ACTOR_COUNT
+			FROM MOVIE M
+			, GRADE G
+			, (
+				SELECT MOVIE_ID
+				, COUNT(ACTOR_LIST_ID) ACTOR_COUNT
+				FROM ACTOR_LIST
+				GROUP BY MOVIE_ID
+			) AC
+			WHERE M.GRADE_ID = G.GRADE_ID
+			AND AC.MOVIE_ID(+) = M.MOVIE_ID
+		</getAllMovie>
+		
+		<getOneMovieInfoByMovieId>
+			/*범위 주석*/
+			SELECT M.*
+			, G.GRADE_TITLE
+			FROM MOVIE M
+			, GRADE G
+			WHERE M.GRADE_ID = G.GRADE_ID
+			AND M.MOVIE_ID = ?
+		</getOneMovieInfoByMovieId>
+		
+		<insertNewMovie>
+			INSERT INTO MOVIE	(
+									MOVIE_ID
+									, TITLE
+									, RATE
+									, RUNNING_TIME
+									, OPEN_DATE
+									, GRADE_ID			
+								)
+			VALUES				(
+									MOVIE_ID_SEQ.NEXTVAL
+									, ?
+									, ?
+									, ?
+									, TO_DATE(?,'YYYY-MM-DD')
+									, ?
+								)					
+		</insertNewMovie>
+		
+		<getLatesMovieId>
+			SELECT	MOVIE_ID_SEQ.CURRVAL
+			FROM	DUAL
+		</getLatesMovieId>
+		
+	</movie>
+	
+	
+	<director>	
+	
+		<getAllDirector>
+			SELECT D.*
+			FROM DIRECTOR D
+		</getAllDirector>
+		<getDirectorsInfoByMovieId>
+				SELECT DIRECTOR_NAME
+				FROM DIRECTED_MOVIE DM, DIRECTOR D
+				WHERE DM.DIRECTOR_ID = D.DIRECTOR_ID
+				AND DM.MOVIE_ID = ?	
+		</getDirectorsInfoByMovieId>	
+	</director>
+	
+	<actor>
+	
+		<getAllActor>
+			SELECT A.*
+			FROM ACTOR A
+		</getAllActor>
+		
+		<getActorsByMovieId>
+				SELECT ACTOR_NAME
+				FROM ACTOR_LIST AL, ACTOR A
+				WHERE AL.ACTOR_ID = A.ACTOR_ID
+				AND AL.MOVIE_ID = ?
+		</getActorsByMovieId>
+			
+		<insertNewActor>
+			INSERT INTO ACTOR	(
+									ACTOR_ID
+									,ACTOR_NAME
+								)
+			VALUES				(
+									ACTOR_ID_SEQ.NEXTVAL
+									, ?	
+ 								)
+		</insertNewActor>
+	</actor>
+	
+	<genre>
+	
+		<getAllGenre>
+			SELECT G.*
+			FROM GENRE G
+		</getAllGenre>
+		
+		<getGenresByMovieId>
+				SELECT GENRE_TITLE
+				FROM GENRE_LIST GL, GENRE G
+				WHERE GL.GENRE_ID = G.GENRE_ID
+				AND GL.MOVIE_ID = ?
+		</getGenresByMovieId>
+	</genre>
+	
+	<grade>
+		<getAllGrade>
+			SELECT G.*
+			FROM GRADE G
+		</getAllGrade>
+		
+	</grade>
+	
+</query>

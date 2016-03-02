@@ -26,6 +26,106 @@
 			});
 				$("#directorsName").text(selectedDirectors);
 		});
+		
+		$("#addNewMovie").click(function() {
+			
+			// Validation Check
+			// input tag는 val을 쓴다.
+			var movieTitle = $("#movieTitle").val();
+			
+			// 이절을 쓰면 사이드에 있는 공백을 지워준다.
+			movieTitle = $.trim( movieTitle );			
+			if( movieTitle == "" ) {
+				alert("영화명을 입력하세요!");
+				$("#movieTitle").focus();
+				return;
+			}			
+			
+			var rate = $("#rate").val();
+			rate = $.trim( rate );			
+			if( rate == "" ) {
+				alert("평점을 입력하세요!");
+				$("#rate").focus();
+				return;
+			}			
+			
+			// == 데이터가 같냐
+			// === 타입까지 같냐 short와 int는 false가 나옴
+			// NaN = not a number
+			// 숫자인지 확인하는 구문
+			if ( isNaN(rate) ) {
+				alert("평점을 올바르게 입력하세여!\n평점은 소수점을 포함한 숫자로 적을 수 있습니다.");
+			}
+			
+			
+			
+			var runningTime = $("#runningTime").val();
+			runningTime = $.trim( runningTime );			
+			if( runningTime == "" ) {
+				alert("상영 시간을 입력하세요!");
+				$("#runningTime").focus();
+				return;
+			}			
+		
+			
+			var regExp = new RegExp("^[0-2]{0,1}[0-9]{1}:[0-5][0-9]$");
+			var isValidrunningTime = regExp.test(runningTime);
+			if ( isValidrunningTime == false ) {
+				alert("상영시간을 올바르게 입력하세요!");
+				return;
+			}			
+			
+			
+			
+			var openDate = $(".openDate").val();
+			//openDate = $.trim( openDate );	
+			if( openDate == "" ) {
+				alert("상영일을 선택하세요!");
+				$("#openDate").focus();
+				return;
+			}		
+			
+			
+			// .grade : 클래스가 grade인것
+			var grade = $(".grade:checked").val();
+			grade = $.trim( grade );	
+			if( grade == "" ) {
+				alert("등급을 선택하세요!");
+				$(".grade").fadeOut().fadeIn().fadeOut.fadeIn();
+				return;
+			}		
+			
+			// each 각 무엇을 선택했는지 알 수 있음
+			var directors = $("#directors option:selected").val();
+			directors = $.trim( directors );
+			if( directors == "" ) {
+				alert("감독을 선택하세요!");
+				$("#directors").fadeOut().fadeIn().fadeOut.fadeIn();
+				return;
+			}
+			
+			
+			var actors = $("#actors option:selected").val();
+			actors = $.trim( actors );
+			if( actors == "" ) {
+				alert("출연진을을 선택하세요!");
+				return;
+			}
+			
+			
+			var genres = $(".genres:checked").val();
+			genres = $.trim( genres );
+			if( genres == "" ) {
+				alert("장르를 선택하세요!");
+				return;
+			}		
+			
+			
+			var form = $("#addNewMovieForm");
+			form.attr("method", "post");
+			form.attr("action", "<c:url value="/addNewMovieAction" />");
+			form.submit();
+		});
 	});
 
 </script>
@@ -34,6 +134,9 @@
 <body>
 	<h1>영화 등록</h1>
 	<hr/>
+	
+	<span class="errorCode">${ errorCode }</span>
+	
 	
 	<form id = "addNewMovieForm">
 		영화명 : <input type="text" id="movieTitle" name="movieTitle"><br/>
@@ -47,8 +150,8 @@
 		<br/>		
 		감독 :
 		<select id="directors" name ="directors" multiple="multiple">
-			<c:forEach items="${directorList}" var ="director">
-				<option value="${director.directorId}">${director.directorName}
+			<c:forEach items="${directorList}" var ="directors">
+				<option value="${directors.directorId}">${directors.directorName}
 				</option>
 			</c:forEach>
 		</select>

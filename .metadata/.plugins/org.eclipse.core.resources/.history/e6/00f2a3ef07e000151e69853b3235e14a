@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/Movie/resource/js/jquery-1.12.1.js"></script>
+<script> 
+$(document).ready(function(){
+    $("#scroll").click(function(){
+        $("div").animate({
+            height: 'toggle'
+        });
+    });
+});
+
+$(document).ready(function(){
+    $("#move").click(function(){
+        var div = $("div");  
+        div.animate({left: '100px'}, "slow");
+        div.animate({fontSize: '3em'}, "slow");
+    });
+});
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        $("p").append(" <b>Appended text</b>.");
+    });
+
+    $("#btn2").click(function(){
+        $("ol").append("<li>Appended item</li>");
+    });
+});
+</script> 
+</head>
+<body>
+<input type = "button" id="scroll" value= "내리기 접기" />
+<input type = "button" id="move" value= "움직이기" />
+
+<br/>
+
+<div style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>
+<div style="background:#98bf21;height:100px;width:200px;position:absolute;">HELLO</div>
+
+<br/><br/><br/><br/><br/>
+
+<p>This is Baek Ji Gyeong</p>
+
+<ol>
+  <li>List item 1</li>
+  <li>List item 2</li>
+  <li>List item 3</li>
+</ol>
+
+<button id="btn1">짱</button>
+<button id="btn2">Append list items</button>
+
+</body>
+</html>

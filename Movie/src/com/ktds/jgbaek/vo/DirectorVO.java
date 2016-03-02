@@ -1,6 +1,6 @@
 package com.ktds.jgbaek.vo;
 
-public class DirectorVO {
+public class DirectorVO extends MovieVO{
 	
 	private int directorId;
 	private String directorName;

@@ -50,6 +50,30 @@ public class AddNewMovieServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String errorCode = request.getParameter("errorCode");
+		//errorCode가 null이 아니라면 앞에 값을 집어넣겠다. null이라면 errorCode를 넣겠다.
+		errorCode = (errorCode == null? "":errorCode);
+		
+		if (errorCode.equals(MovieValidateConst.MISSING_ACTORS)){
+			request.setAttribute("errorMessage", "출연진을 선택하세요.");
+		} else if (errorCode.equals(MovieValidateConst.MISSING_DIRECTORS)){
+			request.setAttribute("errorMessage", "감독을 선택하세요.");
+		} else if (errorCode.equals(MovieValidateConst.MISSING_GENRES)){
+			request.setAttribute("errorMessage", "장르를 선택하세요.");
+		} else if (errorCode.equals(MovieValidateConst.MISSING_GRADE)){
+			request.setAttribute("errorMessage", "등급을 선택하세요.");
+		} else if (errorCode.equals(MovieValidateConst.MISSING_MOVIE_TITLE)){
+			request.setAttribute("errorMessage", "제목을 입력하세요.");
+		} else if (errorCode.equals(MovieValidateConst.MISSING_OPEN_DATE)){
+			request.setAttribute("errorMessage", "개봉일을 입력하세요.");
+		} else if (errorCode.equals(MovieValidateConst.MISSING_RATE)){
+			request.setAttribute("errorMessage", "평점을 입력하세요.");
+		} else if (errorCode.equals(MovieValidateConst.MISSING_RUNNING_TIME)){
+			request.setAttribute("errorMessage", "상영시간을 입력하세요.");
+		}
+		
+		
 		// 1. 장르 리스트
 		List<GenreVO> genreList = genreDAO.getAllGenre();
 		

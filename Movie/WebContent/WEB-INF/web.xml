@@ -69,4 +69,14 @@
     <servlet-name>AddNewMovieServlet</servlet-name>
     <url-pattern>/addNewMovie</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddNewMovieActionServlet</display-name>
+    <servlet-name>AddNewMovieActionServlet</servlet-name>
+    <servlet-class>com.ktds.jgbaek.web.AddNewMovieActionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddNewMovieActionServlet</servlet-name>
+    <url-pattern>/addNewMovieAction</url-pattern>
+  </servlet-mapping>
 </web-app>

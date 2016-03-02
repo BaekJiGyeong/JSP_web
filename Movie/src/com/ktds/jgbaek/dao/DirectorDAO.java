@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ktds.jgbaek.util.xml.XML;
+import com.ktds.jgbaek.vo.ActorVO;
 import com.ktds.jgbaek.vo.DirectorVO;
 import com.ktds.jgbaek.vo.MovieVO;
 
@@ -86,6 +87,36 @@ public class DirectorDAO {
 		}
 		
 		return directors;
+	}
+	
+	public int insertNewDirectorOfNewMovie ( DirectorVO director ){
+		
+		int insertCount = 0;
+		
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "MOVIE", "MOVIE");
+			String query = XML.getNodeString("//query/director/insertNewDirectorOfNewMovie/text()");
+			stmt = conn.prepareStatement(query);
+			
+			//SQL Parameter Mapping
+			//몇번째 물음표를 어디파라미터에 넣을 것인가?
+			stmt.setInt(1, director.getDirectorId());
+			stmt.setInt(2, director.getMovieId());
+			
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);
+		}
+		
+		return 0;
 	}
 	
 	private void loadOracleDriver() {

@@ -1,6 +1,6 @@
 package com.ktds.jgbaek.vo;
 
-public class GenreVO {
+public class GenreVO extends MovieVO{
 
 	
 	private int genreId;

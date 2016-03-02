@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.ktds.jgbaek.util.xml.XML;
 import com.ktds.jgbaek.vo.ActorVO;
+import com.ktds.jgbaek.vo.GenreVO;
 
 
 public class ActorDAO {
@@ -115,6 +116,37 @@ public class ActorDAO {
 		finally {
 			closeDB(conn, stmt, null);
 		}
+	}
+	
+	public int insertNewActorOfNewMovie ( ActorVO actor ){
+		
+		int insertCount = 0;
+		
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "MOVIE", "MOVIE");
+			String query = XML.getNodeString("//query/actor/insertNewActorOfNewMovie/text()");
+			stmt = conn.prepareStatement(query);
+			
+			//SQL Parameter Mapping
+			//몇번째 물음표를 어디파라미터에 넣을 것인가?
+			stmt.setInt(1, actor.getActorId());
+			stmt.setInt(2, actor.getMovieId());
+			
+			stmt.executeUpdate();
+			
+						
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		finally {
+			closeDB(conn, stmt, null);
+		}
+		
+		return 0;
 	}
 
 
