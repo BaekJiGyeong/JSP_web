@@ -36,8 +36,7 @@ public class ActorDAO {
 				actor = new ActorVO();
 				actor.setActorId(rs.getInt("ACTOR_ID"));
 				actor.setActorName(rs.getString("ACTOR_NAME"));
-				actors.add(actor);
-				
+				actors.add(actor);				
 			}
 			
 			

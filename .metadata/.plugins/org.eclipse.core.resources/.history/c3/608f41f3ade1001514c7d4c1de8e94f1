@@ -1,0 +1,17 @@
+package com.ktds.jgbaek.member.biz;
+
+import com.ktds.jgbaek.member.dao.MemberDAO;
+import com.ktds.jgbaek.member.vo.MemberVO;
+
+public class MemberBiz {
+	
+	private MemberDAO memberDAO;
+	
+	public MemberBiz() {
+		memberDAO = new MemberDAO();
+		
+	}
+	public boolean login ( MemberVO member ) {
+		
+	}
+}

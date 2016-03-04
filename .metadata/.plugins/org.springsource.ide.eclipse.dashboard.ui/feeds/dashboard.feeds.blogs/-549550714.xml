@@ -5,7 +5,42 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-03-01T12:26:00Z</updated>
+  <updated>2016-03-03T10:57:00Z</updated>
+  <entry>
+    <title>Webinar: Spring Security Authentication... with Spring Boot and More!</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/03/03/webinar-spring-security-authentication-with-spring-boot-and-more" />
+    <category term="news" label="News and Events" />
+    <author>
+      <name>Pieter Humphrey</name>
+    </author>
+    <id>tag:spring.io,2016-03-03:2415</id>
+    <updated>2016-03-03T10:57:00Z</updated>
+    <content type="html">&lt;p&gt;Guest Speaker: Micah Silverman, Stormpath&lt;/p&gt;
+&lt;p&gt;In this presentation, Java Developer Evangelist Micah Silverman will go over common pain points with Java authentication and how to solve them using Stormpath, Spring Boot, and Spring Security! By the end of this webinar, you¡¯ll be on your way to a fully functioning Spring Boot app with Spring Security and backed by Stormpath.&lt;br/&gt;Topics Covered:&lt;br/&gt;* Stormpath Identity Management&lt;br/&gt;* Authentication Pain Points in Java&lt;br/&gt;* Stormpath + Spring Security + Spring Boot and Your Application&lt;br/&gt;* Quickstart on setting up Spring Security and Spring Boot with a complete user registration and login system&lt;br/&gt;* Advanced Spring Security with Stormpath&lt;br/&gt;* Single Sign-On with Spring Security and Stormpath&amp;rsquo;s IDSite service&lt;br/&gt;* Technical Q&amp;amp;A*&lt;/p&gt;
+&lt;p&gt;Thursday, March 10th, 2016 3:00PM London GMT &lt;a href="http://connect.pivotal.io/OSS_Webinar_7AMSpringSecurityAuthenticationwithSpringBoot_RegisterSpring.html"&gt;Register&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Thursday, March 10th, 2016 10:00AM PST (San Francisco GMT-08:00) &lt;a href="http://connect.pivotal.io/OSS_Webinar_10AMSpringSecurityAuthenticationwithSpringBoot_RegisterSpring.html"&gt;Register&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring IO Platform 2.0.3.RELEASE</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/03/02/spring-io-platform-2-0-3-release" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Andy Wilkinson</name>
+    </author>
+    <id>tag:spring.io,2016-02-29:2404</id>
+    <updated>2016-03-02T12:59:43Z</updated>
+    <content type="html">&lt;p&gt;&lt;a href="http://platform.spring.io/platform"&gt;Spring IO Platform&lt;/a&gt; 2.0.3.RELEASE is now available from both &lt;a href="http://repo.spring.io/release"&gt;repo.spring.io&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3Aio.spring.platform"&gt;Maven Central&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;This maintenance release upgrades the versions of a number of the projects in the Platform to pick up their latest maintenance releases:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring AMQP 1.5.4.RELEASE&lt;/li&gt;
+  &lt;li&gt;Spring Boot 1.3.3.RELEASE&lt;/li&gt;
+  &lt;li&gt;Spring Data Gosling SR4&lt;/li&gt;
+  &lt;li&gt;Spring Framework 4.2.5.RELEASE&lt;/li&gt;
+  &lt;li&gt;Spring Integration 4.2.5.RELEASE&lt;/li&gt;
+  &lt;li&gt;Spring Security OAuth 2.0.9.RELEASE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The versions of several third-party dependencies have also been updated.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://platform.spring.io/platform"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-io/platform"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-io/platform/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/platform/docs/2.0.3.RELEASE/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>This Week in Spring - March 1, 2016</title>
     <link rel="alternate" href="https://spring.io/blog/2016/03/01/this-week-in-spring-march-1-2016" />
@@ -17,7 +52,7 @@
     <updated>2016-03-01T12:26:00Z</updated>
     <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week, I&amp;rsquo;m in Shenzhen, China and &lt;a href="https://voxxeddays.com/zurich"&gt;Zurich, Switzerland for Voxxed Days Zurich&lt;/a&gt;. It&amp;rsquo;s going to be a busy week indeed though I sure hope to see you there! Anyway, we&amp;rsquo;ve got a lot to cover this week so let&amp;rsquo;s get to it!&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Spring Boot ninja &lt;a href="http://spring.io/blog/2016/02/26/spring-boot-1-3-3-and-1-4-0-m1-available-now"&gt;ST?PHANE NICOLL has just announced Spring Boot 1.4.0M1&lt;/a&gt; with excellent couchbase support&lt;/li&gt;
+  &lt;li&gt;Spring Boot ninja &lt;a href="http://spring.io/blog/2016/02/26/spring-boot-1-3-3-and-1-4-0-m1-available-now"&gt;St?phane Nicoll has just announced Spring Boot 1.4.0M1&lt;/a&gt; with excellent couchbase support&lt;/li&gt;
   &lt;li&gt;Spring Session lead Rob Winch, never resting on his laurels, just announced &lt;a href="http://spring.io/blog/2016/02/25/spring-session-1-1-0-released"&gt;Spring Session 1.1.0&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Also not resting on his laurels, St?phane just &lt;a href="https://spring.io/blog/2016/02/25/spring-framework-4-2-5-available-now"&gt;announced Spring Framework 4.2.5, chock full &amp;rsquo;o bug fixes and updates&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Spring XD lead Mark Pollack has just announced &lt;a href="http://spring.io/blog/2016/02/24/spring-xd-1-3-1-ga-and-flo-for-spring-xd-1-0-1-ga-released"&gt;that Spring XD 1.3.1 is now GA, along with Spring Flo for XD 1.0.1 GA&lt;/a&gt;&lt;/li&gt;
@@ -326,30 +361,5 @@
 &lt;p&gt;Spark is an in-memory data processing framework that, unlike Hadoop, provides interactive and real-time analysis on large datasets. Furthermore, Spark has a more flexible programming model and gives better performance than Hadoop.&lt;/p&gt;
 &lt;p&gt;In this talk, we aim at giving a portrait of Spark and at browsing its ecosystem, in particular Spark Streaming and MLlib with a concrete example. We will also show how you can use Spark with Spring XD, allowing you to take advantage of the strengths in each platform.&lt;/p&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/Zv_mnjYhFAk" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne2GX 2015 replay: From Zero to Hero with Spring WebSocket</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/02/23/springone2gx-2015-replay-from-zero-to-hero-with-spring-websocket" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-02-23:2397</id>
-    <updated>2016-02-23T13:00:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015&lt;br/&gt;Presenter: Sergi Almar&lt;br/&gt;Web /Javascript Track&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/from-zero-to-hero-with-spring-websocket"&gt;http://www.slideshare.net/SpringCentral/from-zero-to-hero-with-spring-websocket&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Real-time has changed the way we interact with the web, we demand information in real-time. Join Sergi Almar in this presentation to learn how to progressively enhance your traditional Spring MVC application with real-time functionalities for a more interactive and engaging user experience. Starting by adding server push notifications with Server-sent Events (supported in the new Spring 4.2) we will move to a bidirectional messaging communication style with WebSockets. Going real-time couldn&amp;rsquo;t be easier with Spring! We will also see the challenges and considerations to take into account when scaling our WebSocket application and deploy it to Cloud Foundry.&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/nxakp15CACY" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>Webinar replay: What's new in Spring Data Gosling-Fowler</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/02/18/webinar-replay-what-s-new-in-spring-data-gosling-fowler" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-02-19:2392</id>
-    <updated>2016-02-18T18:35:00Z</updated>
-    <content type="html">&lt;p&gt;Speaker: Oliver Gierke&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/whats-new-in-spring-data-53300373"&gt;http://www.slideshare.net/SpringCentral/whats-new-in-spring-data-53300373&lt;/a&gt;&lt;br/&gt;A year has passed and the Spring Data shipped two release train iterations packed with interesting features. This talk will give a broad overview of the most important introduced in the Fowler and Gosling release trains. We will cover recent additions and improvements in Spring Data Commons - the module that&amp;rsquo;s shared amongst the store specific ones. We&amp;rsquo;ll then delve into the latest and greatest features of individual store modules, like JPA, MongoDB and the community ones as well.&lt;/p&gt;
-&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/j28kkTSF8p8" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
   </entry>
 </feed>

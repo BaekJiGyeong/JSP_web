@@ -1,0 +1,80 @@
+package com.ktds.jgbaek.member.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ktds.jgbaek.member.vo.MemberVO;
+import com.ktds.jgbaek.util.xml.XML;
+import com.ktds.jgbaek.vo.ActorVO;
+
+public class MemberDAO {
+	
+	public MemberVO getMemberByIdAndPassword ( MemberVO member ) {
+		public List<MemberVO> getAllActor() {
+			
+			loadOracleDriver();
+			
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			
+			List<MemberVO> actors = new ArrayList<ActorVO>();
+			
+			try {
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","MOVIE", "MOVIE");
+				String query = XML.getNodeString("//query/actor/getAllActor/text()");
+				stmt = conn.prepareStatement(query);
+				rs = stmt.executeQuery();
+				
+				MemberVO actor = null;
+				while( rs.next() ) {
+					actor = new MemberVO();
+					actor.setMemberId(rs.getInt("ACTOR_ID"));
+					actor.setMemberName(rs.getString("ACTOR_NAME"));
+					actors.add(actor);				
+				}
+				
+				
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage(), e);
+			}
+			finally {
+				
+				closeDB(conn, stmt, rs);
+			}
+			
+			return actors;
+	}
+		
+		private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
+			if( rs != null ) {
+				try {
+					rs.close();
+				} catch (SQLException e) {}
+			}
+			if( stmt != null ) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {}
+			}
+			if( conn != null ) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+		private void loadOracleDriver() {
+			try {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+			} catch (ClassNotFoundException e) {
+				throw new RuntimeException(e.getMessage(), e);
+			}
+		}
+
+}

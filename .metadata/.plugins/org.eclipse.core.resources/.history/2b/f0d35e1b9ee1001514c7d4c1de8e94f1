@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+
+div {
+	margin: 10px;
+}
+div#wrapper {
+	 background-color: #364659;
+	
+
+	 
+}
+div#col1 {
+	top: 10px;
+	position: absolute;
+}
+div#col2 {
+	float: right;
+	width: 50%;
+	 height: 100%;
+	 top: 30px;
+}
+div#col1row1 {
+	background-color: #f2f2f2;
+	width: 100px;
+	height: 220px;
+	float: left;
+}
+
+div#col2row1 {
+	background-color: #f2dead;
+	width: 100px;
+	height: 100px;
+	float: right;
+}
+div#col2row2 {
+	background-color: #ec8871;
+	width: 100px;
+	height: 100px;
+	top: 120px;
+	float: right;
+
+}

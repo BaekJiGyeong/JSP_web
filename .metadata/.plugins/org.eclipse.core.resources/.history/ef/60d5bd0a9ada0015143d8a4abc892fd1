@@ -1,5 +1,0 @@
-package com.ktds.jgbaek.dao;
-
-public interface Const {
-
-}

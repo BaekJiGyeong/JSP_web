@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+div#wrapper {
+	 background-color: #ffffff;
+	 position: absolute;
+}
+div#col1row1 {
+	background-color: #008040;
+	width: 100px;
+	height: 200px;
+	float: left;
+}
+div#col2 {
+	float: left;
+}
+div#col2row1 {
+	background-color: #008040;
+	width: 100px;
+	height: 100px;
+}
+div#col2row2 {
+	background-color: #008040;
+	width: 100px;
+	height: 100px;
+	top: 150px;
+	position: absolute;
+}

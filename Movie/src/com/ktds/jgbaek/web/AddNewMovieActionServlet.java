@@ -138,7 +138,6 @@ public class AddNewMovieActionServlet extends HttpServlet {
 			actor.setMovieId(newMovieId);
 			for( String selectedActor : actors ) {
 				actor.setActorId(Integer.parseInt(selectedActor));
-				actorDAO.insertNewActorOfNewMovie(actor);
 			}
 			
 			DirectorVO director = new DirectorVO();		
@@ -150,5 +149,6 @@ public class AddNewMovieActionServlet extends HttpServlet {
 		}
 		
 		response.sendRedirect("/Movie/movie");		
-	}
+		return;
+	}		
 }
