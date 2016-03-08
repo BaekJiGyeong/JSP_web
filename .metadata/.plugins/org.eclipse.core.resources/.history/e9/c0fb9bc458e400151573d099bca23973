@@ -1,0 +1,43 @@
+package com.ktds.jgbaek.article.biz;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.ktds.jgbaek.article.dao.ArticleDAO;
+import com.ktds.jgbaek.article.vo.ArticleVO;
+
+
+
+public class ArticleBiz {
+
+   private ArticleDAO articleDAO;
+   
+   public ArticleBiz() {
+      articleDAO = new ArticleDAO();
+   }
+   
+   public List<ArticleVO> getAllArticle ( HttpServletRequest request ) {
+      
+      List<ArticleVO> articleList = articleDAO.getAllArticle();
+      
+      return articleList;
+
+   }
+   
+   public ArticleVO getOneArticleByArticleId ( int articleId ) {
+      
+      ArticleVO article = articleDAO.getOneArticleByArticleId( articleId );
+      article = articleDAO.hitArticle(articleId);
+      return article;
+      
+   }
+   
+   public ArticleVO hitArticle ( int articleId ) {
+	      
+	      ArticleVO article = articleDAO.getOneArticleByArticleId( articleId );
+	      article = articleDAO.hitArticle(articleId);
+	      return article;
+	      
+	   }
+}

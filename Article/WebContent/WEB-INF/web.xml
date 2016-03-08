@@ -28,4 +28,43 @@
     <servlet-name>DoLoginServlet</servlet-name>
     <url-pattern>/doLogin</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>SessionCheckFilter</display-name>
+    <filter-name>SessionCheckFilter</filter-name>
+    <filter-class>com.ktds.jgbaek.filter.SessionCheckFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>SessionCheckFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListServlet</display-name>
+    <servlet-name>ListServlet</servlet-name>
+    <servlet-class>com.ktds.jgbaek.article.web.ListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListServlet</servlet-name>
+    <url-pattern>/list</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DetailServlet</display-name>
+    <servlet-name>DetailServlet</servlet-name>
+    <servlet-class>com.ktds.jgbaek.article.web.DetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DetailServlet</servlet-name>
+    <url-pattern>/detail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RecommendServlet</display-name>
+    <servlet-name>RecommendServlet</servlet-name>
+    <servlet-class>com.ktds.jgbaek.article.web.RecommendServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RecommendServlet</servlet-name>
+    <url-pattern>/recommend</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -26,8 +26,7 @@ public class MemberBiz {
 			session.setAttribute("_MEMBER_", loginMember); // _MEMBER_ 세션 명명 규칙
 		}
 		
-		// 3. 결과를 보고한다.
-		
+		// 3. 결과를 보고한다.		
 		return loginMember != null;
 		
 	}

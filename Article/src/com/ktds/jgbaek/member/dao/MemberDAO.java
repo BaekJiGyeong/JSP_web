@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.ktds.jgbaek.article.vo.ArticleVO;
 import com.ktds.jgbaek.member.vo.MemberVO;
 import com.ktds.jgbaek.util.xml.XML;
 
@@ -45,6 +46,8 @@ public class MemberDAO {
 			closeDB(conn, stmt, rs);
 		}
 	}
+	
+	
 
 	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
 		if (rs != null) {

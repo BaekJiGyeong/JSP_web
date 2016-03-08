@@ -17,7 +17,7 @@
 		</list>
 	</section>
 	<section name="NewWizardAction">
-		<item value="org.eclipse.wst.css.ui.internal.wizard.NewCSSWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<item value="org.eclipse.jst.servlet.ui.internal.wizard.AddServletWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
 			<item value="org.eclipse.wst.web.ui"/>
 			<item value="org.eclipse.wst.XMLCategory"/>
@@ -33,6 +33,7 @@
 		<item value="true" key="WizardZipFileResourceExportPage1.STORE_COMPRESS_CONTENTS_ID"/>
 		<item value="true" key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID"/>
 		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="C:\Users\206-001\Desktop\과제제출Export\Article.zip"/>
 			<item value="C:\Users\206-001\Desktop\과제제출Export\Project0303.zip"/>
 			<item value="C:\Users\206-001\Desktop\과제제출Export\Movie.zip"/>
 		</list>

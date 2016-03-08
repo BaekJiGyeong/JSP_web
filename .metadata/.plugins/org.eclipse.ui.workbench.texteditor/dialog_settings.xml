@@ -2,20 +2,24 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="ACTOR" key="selection"/>
+		<item value="article" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="movie"/>
+			<item value="validMember"/>
+			<item value="package com.ktds.jgbaek.member.dao;"/>
 			<item value="utf"/>
 			<item value="actor"/>
 			<item value="genre"/>
 			<item value="actors"/>
 			<item value="director"/>
-			<item value="grade"/>
 		</list>
 		<list key="replacehistory">
+			<item value="article"/>
+			<item value="articles"/>
 			<item value=""/>
 		</list>
 	</section>

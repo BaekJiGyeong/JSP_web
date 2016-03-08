@@ -1,0 +1,45 @@
+package com.ktds.jgbaek.member.web;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.ktds.jgbaek.member.dao.MemberDAO;
+import com.ktds.jgbaek.vo.MovieVO;
+
+/**
+ * Servlet implementation class ListServlet
+ */
+public class ListServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private MemberDAO memberDAO;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ListServlet() {
+        super();
+        memberDAO = new MemberDAO();
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		this.doPost(request, response);
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setAttribute("member", arg1);
+	}
+
+}

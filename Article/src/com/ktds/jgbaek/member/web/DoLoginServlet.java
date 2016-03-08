@@ -43,14 +43,13 @@ public class DoLoginServlet extends HttpServlet {
 		loginMember.setMemberId(memberId);
 		loginMember.setPassword(memberPassword);
 		
-		boolean isLoginSuccess = memberBiz.login(loginMember, request);
-		
+		boolean isLoginSuccess = memberBiz.login(loginMember, request);		
 		 if ( isLoginSuccess ) {
 			 response.sendRedirect("/list");
 			 return;
 		 }
 		 else {
-			 response.sendRedirect("/login?errorCode=1");
+			 response.sendRedirect("/?errorCode=1");
 			 return;
 		 }
 		

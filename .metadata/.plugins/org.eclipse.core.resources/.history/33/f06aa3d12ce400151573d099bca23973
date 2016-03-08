@@ -1,0 +1,87 @@
+package com.ktds.jgbaek.member.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.ktds.jgbaek.member.vo.ArticleVO;
+import com.ktds.jgbaek.util.xml.XML;
+
+public class ArticleDAO {
+	public ArticleVO getMemberByIdAndPassword(ArticleVO article) {
+
+		loadOracleDriver();
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try
+
+		{
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ARTICLE", "ARTICLE");
+
+			String query = XML.getNodeString("//query/article/getArticleByMemberId/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, article.getMemberId());
+
+			rs = stmt.executeQuery();
+
+			ArticleVO validMember = null;
+
+			if (rs.next()) {
+				validMember = new ArticleVO();
+				validMember.setArticleId(rs.getInt("ARTICLE_ID"));
+				validMember.setMemberId(rs.getString("MEMBER_ID"));
+				validMember.setTitle(rs.getString("TITLE"));
+				validMember.setDescript(rs.getString("DESCRIPT"));
+				validMember.setHits(rs.getInt("HITS"));
+				validMember.setRecommends(rs.getInt("RECOMMENDS"));
+			}
+			return validMember;
+		} catch (
+
+		SQLException e)
+
+		{
+			throw new RuntimeException(e.getMessage(), e);
+		} finally
+
+		{
+			closeDB(conn, stmt, rs);
+		}
+
+	}
+
+	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (stmt != null) {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+
+	private void loadOracleDriver() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+	}
+
+}
