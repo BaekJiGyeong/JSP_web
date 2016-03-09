@@ -35,7 +35,7 @@ public class ArticleDAO {
 
 			ArticleVO article = null;
 
-			if (rs.next()) {
+			while (rs.next()) {
 				article = new ArticleVO();
 				article.setArticleId(rs.getInt("ARTICLE_ID"));
 				article.setTitle(rs.getString("TITLE"));
@@ -140,6 +140,99 @@ public class ArticleDAO {
 			closeDB(conn, stmt, rs);
 		}
 	}
+	
+	public void deleteArticle(int articleId) {
+
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		ArticleVO article = new ArticleVO();
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ARTICLE", "ARTICLE");
+			String query = XML.getNodeString("//query/article/deleteArticle/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, articleId);
+			rs = stmt.executeQuery();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+	public void writeArticle(ArticleVO article) {
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ARTICLE", "ARTICLE");
+			String query = XML.getNodeString("//query/article/writeArticle/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, article.getMemberId());
+			stmt.setString(2, article.getTitle());
+			stmt.setString(3, article.getDescript());
+			
+			rs = stmt.executeQuery();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+	
+	
+	
+	
+	
+	public void modifyTitle(ArticleVO article) {
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ARTICLE", "ARTICLE");
+			String query = XML.getNodeString("//query/article/writeArticle/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, article.getMemberId());
+			stmt.setString(2, article.getTitle());
+			stmt.setString(3, article.getDescript());
+			
+			rs = stmt.executeQuery();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
+	public void modifyDesctipt(ArticleVO article) {
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ARTICLE", "ARTICLE");
+			String query = XML.getNodeString("//query/article/writeArticle/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, article.getMemberId());
+			stmt.setString(2, article.getTitle());
+			stmt.setString(3, article.getDescript());
+			
+			rs = stmt.executeQuery();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+	}
 
 	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
 		if (rs != null) {
@@ -168,6 +261,11 @@ public class ArticleDAO {
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}
+	}
+
+	public int updateArticle(ArticleVO changeArticle) {
+		
+		return 0;
 	}
 
 }

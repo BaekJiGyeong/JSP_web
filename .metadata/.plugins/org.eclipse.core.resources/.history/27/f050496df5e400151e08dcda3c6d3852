@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {		
+		$("#doWrite").click(function() {
+			var form = $("#writeForm");
+			form.attr("method", "post");
+			form.attr("action", "/doWrite");
+			form.submit();
+		});
+		
+		$("#join").click(function() {
+			location.href = "/registerMember.jsp";
+		});
+	});
+	
+</script>
+
+<form id="writeForm">
+	<table>
+		<tr>
+			<td>Title</td>
+			<td>
+				<input type="text" id="title" name="title" style="width: 25px"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td>
+				<textarea id="description" name="description" style="width: 250px; height:150px"></textarea>
+			</td>
+		</tr>	
+	</table>	
+</form>
+
+<input type="button" id="doWrite" value="등록!"/></br>
+<intput type="reset" value="다시 쓰기"/></br>
+<intput type="button" id="cancle" value="취소"/></br>
+
+<jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>

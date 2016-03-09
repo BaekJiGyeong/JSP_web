@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query>
+	
+	<member>
+	
+		<getMemberByIdAndPassword>
+			SELECT	MEMBER_ID
+					, NICK_NAME
+					, PASSWORD
+					, EMAIL
+			FROM	MEMBERS
+			WHERE	MEMBER_ID = ?
+			AND		PASSWORD = ?
+		</getMemberByIdAndPassword>
+			
+	</member>
+	
+	<article>
+		<getAllArticle>
+			SELECT	ARTICLE_ID
+					, TITLE
+					, NICK_NAME
+					, HITS
+					, RECOMMENDS
+			FROM	ARTICLE A
+					, MEMBERS M
+			WHERE	A.MEMBER_ID = M.MEMBER_ID
+		</getAllArticle>
+		
+		<getOneArticleByArticleId>
+			SELECT	A.*
+					, M.NICK_NAME
+			FROM	ARTICLE A
+					, MEMBERS M
+			WHERE	A.MEMBER_ID = M.MEMBER_ID
+			AND     A.ARTICLE_ID = ?
+		</getOneArticleByArticleId>
+		
+		<hitArticle>
+			UPDATE ARTICLE
+			SET    HITS       = HITS+1
+			WHERE  ARTICLE_ID = ?		
+		</hitArticle>
+		
+		<recommendArticle>
+			UPDATE ARTICLE
+			SET    RECOMMENDS       = RECOMMENDS+1
+			WHERE  ARTICLE_ID = ?
+		</recommendArticle>
+		
+		<deleteArticle>
+			DELETE 
+			FROM   ARTICLE
+			WHERE  ARTICLE_ID = ?		
+		</deleteArticle>
+		
+		<writeArticle>
+			INSERT INTO ARTICLE (
+								   ARTICLE_ID
+								   , MEMBER_ID
+								   , TITLE
+								   , DESCRIPT) 
+			VALUES				 ( ARTICLE_ID_SEQ.NEXTVAL,
+									 ?,
+									 ?,
+									 ?
+								 )
+		</writeArticle>
+	</article>
+	
+</query>

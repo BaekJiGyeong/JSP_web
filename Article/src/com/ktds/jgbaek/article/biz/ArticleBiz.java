@@ -3,9 +3,11 @@ package com.ktds.jgbaek.article.biz;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.ktds.jgbaek.article.dao.ArticleDAO;
 import com.ktds.jgbaek.article.vo.ArticleVO;
+import com.ktds.jgbaek.member.vo.MemberVO;
 
 public class ArticleBiz {
 
@@ -31,7 +33,7 @@ public class ArticleBiz {
 		// 3. article 내용을 반환해준다.
 		return article;
 	}
-	
+
 	public ArticleVO recommendArticle(int articleId) {
 		// 1. article id를 가진 article의 추천수를 update 한다.
 		articleDAO.recommendArticle(articleId);
@@ -39,8 +41,49 @@ public class ArticleBiz {
 		ArticleVO article = articleDAO.getOneArticleByArticleId(articleId);
 		// 3. article 내용을 반환해준다.
 		return article;
-	
+	}
+
+	public void deleteArticle(int articleId) {
+		articleDAO.deleteArticle(articleId);
+	}
+
+	public boolean write(ArticleVO article) {
+		String description = article.getDescript();
+		description = description.replaceAll("\n", "<br/>") ;
+		article.setDescript(description);
+		articleDAO.writeArticle(article);
+		return article != null;
 
 	}
+	
+	public boolean modifyArticle(HttpServletRequest request) {
+
+		int articleId = Integer.parseInt(request.getParameter("articleId"));
+		ArticleVO originArticle = getOneArticleByArticleId(articleId);
+		
+		int changeCount = 0;
+		String title = request.getParameter("title");
+		String description = request.getParameter("description");
+		
+		// 원래 글과 수정한 글이 다른가
+		ArticleVO changeArticle = new ArticleVO();
+		if (!originArticle.getTitle().equals(title)){
+			changeCount++;
+			changeArticle.setTitle(title);
+		}
+		if (!originArticle.getDescript().equals(description)){
+			changeCount++;
+			changeArticle.setDescript(description);
+		}
+		
+		if ( changeCount == 0 ) {
+			throw new RuntimeException("변경된 사항이 없습니다.");
+		}
+		else {
+				return articleDAO.updateArticle(changeArticle) > 0;	
+			
+	     	}
+	}
+
 
 }
