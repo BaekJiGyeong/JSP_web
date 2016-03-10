@@ -8,6 +8,7 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="MultipartFile"/>
 			<item value="movie"/>
 			<item value="validMember"/>
 			<item value="package com.ktds.jgbaek.member.dao;"/>
@@ -15,7 +16,6 @@
 			<item value="actor"/>
 			<item value="genre"/>
 			<item value="actors"/>
-			<item value="director"/>
 		</list>
 		<list key="replacehistory">
 			<item value="article"/>
