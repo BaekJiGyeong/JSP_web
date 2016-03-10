@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query>
+	
+	<member>
+	
+		<getMemberByIdAndPassword>
+			SELECT	MEMBER_ID
+					, NICK_NAME
+					, PASSWORD
+					, EMAIL
+			FROM	MEMBERS
+			WHERE	MEMBER_ID = ?
+			AND		PASSWORD = ?
+		</getMemberByIdAndPassword>
+		
+		<addNewMember>
+		INSERT INTO MEMBERS (
+		                        MEMBER_ID
+		                        , NICK_NAME
+		                        , PASSWORD
+		                        , EMAIL) 
+		VALUES 				( 	
+								?
+								, ?
+								, ?
+								, ?	
+							)
+		</addNewMember>
+		<getAllMember>
+			SELECT	*
+			FROM	MEMBERS
+		</getAllMember>
+			
+	</member>
+	
+	<article>
+		<getAllArticleCount>
+			SELECT	COUNT(A.ARTICLE_ID)
+			FROM	ARTICLE A
+					, MEMBERS M
+			WHERE	A.MEMBER_ID = M.MEMBER_ID			
+		</getAllArticleCount>
+		<getAllArticle>
+			SELECT	ARTICLE_ID
+					, TITLE
+					, NICK_NAME
+					, HITS
+					, RECOMMENDS
+			FROM	ARTICLE A
+					, MEMBERS M
+			WHERE	A.MEMBER_ID = M.MEMBER_ID
+			ORDER	BY ARTICLE_ID DESC
+		</getAllArticle>
+		
+		<getOneArticleByArticleId>
+			SELECT	A.*
+					, M.NICK_NAME
+			FROM	ARTICLE A
+					, MEMBERS M
+			WHERE	A.MEMBER_ID = M.MEMBER_ID
+			AND     A.ARTICLE_ID = ?
+		</getOneArticleByArticleId>
+		
+		<hitArticle>
+			UPDATE ARTICLE
+			SET    HITS       = HITS+1
+			WHERE  ARTICLE_ID = ?		
+		</hitArticle>
+		
+		<recommendArticle>
+			UPDATE ARTICLE
+			SET    RECOMMENDS       = RECOMMENDS+1
+			WHERE  ARTICLE_ID = ?
+		</recommendArticle>
+		
+		<deleteArticle>
+			DELETE 
+			FROM   ARTICLE
+			WHERE  ARTICLE_ID = ?		
+		</deleteArticle>
+		
+		<writeArticle>
+			INSERT INTO ARTICLE (
+								   ARTICLE_ID
+								   , MEMBER_ID
+								   , TITLE
+								   , DESCRIPT) 
+			VALUES				 ( ARTICLE_ID_SEQ.NEXTVAL,
+									 ?,
+									 ?,
+									 ?
+								 )
+		</writeArticle>
+		
+		<updateArticleOnlyTitle>
+			UPDATE	ARTICLE
+			SET		TITLE=?
+			WHERE	ARTICLE_ID=?
+		</updateArticleOnlyTitle>
+		
+		<updateArticleOnlyDescription>
+			UPDATE	ARTICLE
+			SET		DESCRIPT=?
+			WHERE	ARTICLE_ID=?		
+		</updateArticleOnlyDescription>
+		
+		<updateArticle>
+			UPDATE	ARTICLE
+			SET		TITLE=?
+					, DESCRIPT=?
+			WHERE	ARTICLE_ID=?		
+		</updateArticle>
+	</article>
+	
+</query>

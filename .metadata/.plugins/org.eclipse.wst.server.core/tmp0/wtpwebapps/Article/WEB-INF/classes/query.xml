@@ -34,16 +34,34 @@
 	</member>
 	
 	<article>
-		<getAllArticle>
-			SELECT	ARTICLE_ID
-					, TITLE
-					, NICK_NAME
-					, HITS
-					, RECOMMENDS
+	 
+		<getAllArticleCount>
+			SELECT	COUNT(A.ARTICLE_ID)
 			FROM	ARTICLE A
 					, MEMBERS M
-			WHERE	A.MEMBER_ID = M.MEMBER_ID
+			WHERE	A.MEMBER_ID = M.MEMBER_ID			
+		</getAllArticleCount>
+		<getAllArticle>
+		SELECT	*
+		FROM	(
+					SELECT	ROWNUM AS RNUM
+							, A.*
+					FROM	(
+							SELECT	ARTICLE_ID
+									, TITLE
+									, NICK_NAME
+									, HITS
+									, RECOMMENDS
+							FROM	ARTICLE A
+									, MEMBERS M
+							WHERE	A.MEMBER_ID = M.MEMBER_ID
+							ORDER	BY ARTICLE_ID DESC
+							) A
+					WHERE	ROWNUM &lt;=?
+				)
+		WHERE	RNUM >=?
 		</getAllArticle>
+		
 		
 		<getOneArticleByArticleId>
 			SELECT	A.*

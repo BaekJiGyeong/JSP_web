@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+ 총 ${articles.paging.totalArticleCount} 건의 게시물이 있습니다.
 <table border="2">
 	<tr>
 		<th>ARTICLE_ID</th>
@@ -19,7 +20,7 @@
 		<th>RECOMMENDS</th>
 	</tr>	
 
-<c:forEach items="${ articles }" var="articles">
+<c:forEach items="${ articles.articleList }" var="articles">
 	<tr>
 		<td>${ articles.articleId }</td>
 		<td><a href="/detail?articleId=${articles.articleId }">${ articles.title }</td>
@@ -31,6 +32,13 @@
 
 
 </c:forEach>
+<tr>
+	<td colspan="5">
+		<form id="searchForm">
+		${articles.paging.getPagingList("pageNo","[@]","[이전]", "[다음]", "searchForm")}
+		</form>
+	</td>
+</tr>
 </table>
 
 <a href="/write">글쓰기</a><br/>

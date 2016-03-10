@@ -3,11 +3,12 @@ package com.ktds.jgbaek.article.biz;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import com.ktds.jgbaek.article.dao.ArticleDAO;
+import com.ktds.jgbaek.article.vo.ArticleListVO;
+import com.ktds.jgbaek.article.vo.ArticleSearchVO;
 import com.ktds.jgbaek.article.vo.ArticleVO;
-import com.ktds.jgbaek.member.vo.MemberVO;
+import com.ktds.jgbaek.util.web.Paging;
 
 public class ArticleBiz {
 
@@ -17,13 +18,24 @@ public class ArticleBiz {
 		articleDAO = new ArticleDAO();
 	}
 
-	public List<ArticleVO> getAllArticle(HttpServletRequest request) {
-
-		List<ArticleVO> articleList = articleDAO.getAllArticle();
-
-		return articleList;
-
-	}
+	public ArticleListVO getArticleList(ArticleSearchVO searchVO) {
+	      
+	      int allArticleCount = articleDAO.getAllArticleCount();
+	      Paging paging = new Paging();
+	      paging.setTotalArticleCount(allArticleCount);
+	      paging.setPageNumber(searchVO.getPageNo() + "");
+	      
+	      searchVO.setStartIndex(paging.getStartArticleNumber());
+	      searchVO.setEndIndex(paging.getEndArticleNumber());
+	      
+	      List<ArticleVO> articles = articleDAO.getAllArticleList(searchVO);
+	      
+	      ArticleListVO articleList = new ArticleListVO();
+	      articleList.setArticleList(articles);
+	      articleList.setPaging(paging);
+	      
+	      return articleList;
+	   }
 
 	public ArticleVO getOneArticleByArticleId(int articleId) {
 		// 1. article id를 가진 article의 조회수를 update 한다.
@@ -49,41 +61,40 @@ public class ArticleBiz {
 
 	public boolean write(ArticleVO article) {
 		String description = article.getDescript();
-		description = description.replaceAll("\n", "<br/>") ;
+		description = description.replaceAll("\n", "<br/>");
 		article.setDescript(description);
 		articleDAO.writeArticle(article);
 		return article != null;
 
 	}
-	
+
 	public boolean modifyArticle(HttpServletRequest request) {
 
 		int articleId = Integer.parseInt(request.getParameter("articleId"));
 		ArticleVO originArticle = getOneArticleByArticleId(articleId);
-		
+
 		int changeCount = 0;
 		String title = request.getParameter("title");
 		String description = request.getParameter("description");
-		
+
 		// 원래 글과 수정한 글이 다른가
 		ArticleVO changeArticle = new ArticleVO();
-		if (!originArticle.getTitle().equals(title)){
+		if (!originArticle.getTitle().equals(title)) {
 			changeCount++;
 			changeArticle.setTitle(title);
 		}
-		if (!originArticle.getDescript().equals(description)){
+		description = description.replaceAll("\n", "<br/>");
+		if (!originArticle.getDescript().equals(description)) {
 			changeCount++;
 			changeArticle.setDescript(description);
 		}
-		
-		if ( changeCount == 0 ) {
-			throw new RuntimeException("변경된 사항이 없습니다.");
-		}
-		else {
-				return articleDAO.updateArticle(changeArticle) > 0;	
-			
-	     	}
-	}
 
+		if (changeCount == 0) {
+			throw new RuntimeException("변경된 사항이 없습니다.");
+		} else {
+			changeArticle.setArticleId(articleId);
+			return articleDAO.updateArticle(changeArticle) > 0;
+		}
+	}
 
 }

@@ -1,0 +1,5 @@
+package com.ktds.jgbaek.article.vo;
+
+public class ArticleSearchVO {
+
+}

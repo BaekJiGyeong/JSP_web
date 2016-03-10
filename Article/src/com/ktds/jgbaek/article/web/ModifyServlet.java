@@ -35,12 +35,12 @@ public class ModifyServlet extends HttpServlet {
 		int articleId = Integer.parseInt(request.getParameter("articleId"));
 		
 		// 2. 수정하고자 하는 글의 정보를 가져와야 한다.
-		ArticleVO article = articleBiz.getOneArticleByArticleId(articleId);
-		
+		ArticleVO article = articleBiz.getOneArticleByArticleId(articleId);		
 		
 		// 2-1. 수정하고자 하는 글의 작성자가 본인이 맞는지 확인한다.
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO)session.getAttribute("_MEMBER_");
+		
 		if (article.getMemberId().equals(member.getMemberId())){
 			
 			// <br/>을 \n으로 바꿔준다.
@@ -52,11 +52,12 @@ public class ModifyServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/article/write.jsp");
 			rd.forward(request, response);
 		}
+		
+		// 3. 수정하고자 하는 글의 정보를 JSP로 보내준다.
 		else {
 			response.sendRedirect("/list");
 		}
 		
-		// 3. 수정하고자 하는 글의 정보를 JSP로 보내준다.
 	}
 
 }
