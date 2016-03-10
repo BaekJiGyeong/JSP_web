@@ -1,0 +1,46 @@
+package com.ktds.jgbaek.file.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.ktds.jgbaek.util.MultipartHttpServletRequest.MultipartFile;
+
+public class FileDAO {
+	
+	public void uploadFile(MultipartFile file) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (stmt != null) {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+			}
+		}
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+
+	private void loadOracleDriver() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+	}
+
+}

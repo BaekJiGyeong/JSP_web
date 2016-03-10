@@ -121,6 +121,26 @@
 					, DESCRIPT=?
 			WHERE	ARTICLE_ID=?		
 		</updateArticle>
+		<getLatesArticleId>
+			SELECT	ARTICLE_ID_SEQ.CURRVAL
+			FROM	DUAL
+		</getLatesArticleId>
 	</article>
+	
+	<file>
+		<uploadFile>
+			INSERT INTO FILES   (
+		                        FILE_ID
+		                        , ARTICLE_ID
+		                        , FILE_NAME
+		                        , FILE_LOCATION) 
+			VALUES              ( 
+		                        FILE_ID_SEQ.NEXTVAL
+		                        , ?
+		                        , ?
+		                        , ?
+		        	            )
+		</uploadFile>
+	</file>
 	
 </query>

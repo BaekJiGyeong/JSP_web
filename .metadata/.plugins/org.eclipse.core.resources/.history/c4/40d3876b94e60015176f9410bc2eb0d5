@@ -1,0 +1,5 @@
+package com.ktds.jgbaek.file.dao;
+
+public class FileDAO {
+
+}

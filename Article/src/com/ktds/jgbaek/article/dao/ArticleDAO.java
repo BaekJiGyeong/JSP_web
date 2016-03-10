@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.ktds.jgbaek.article.vo.ArticleSearchVO;
 import com.ktds.jgbaek.article.vo.ArticleVO;
+import com.ktds.jgbaek.util.MultipartHttpServletRequest.MultipartFile;
 import com.ktds.jgbaek.util.xml.XML;
 
 public class ArticleDAO {
@@ -166,7 +167,10 @@ public class ArticleDAO {
 		}
 	}
 
-	public void writeArticle(ArticleVO article) {
+	public int writeArticle(ArticleVO article) {
+		
+		int insertCount = 0;
+		
 		loadOracleDriver();
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -179,14 +183,35 @@ public class ArticleDAO {
 			stmt.setString(1, article.getMemberId());
 			stmt.setString(2, article.getTitle());
 			stmt.setString(3, article.getDescript());
-
-			rs = stmt.executeQuery();
+			
+			insertCount = stmt.executeUpdate();
+			
+			// 영화 1건이 insert 되었다.
+			if( insertCount > 0 ){
+				
+				stmt.close();
+				//close
+				String query1 = XML.getNodeString("//query/article/getLatesArticleId/text()");
+				stmt = conn.prepareStatement(query1);
+				
+				rs = stmt.executeQuery();
+				
+				int articleId = 0;
+				
+				if ( rs.next() ) {
+					articleId = rs.getInt(1);
+				}				
+				
+				rs.close();
+				return articleId;
+			}
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} finally {
 			closeDB(conn, stmt, rs);
 		}
+		return insertCount;
 	}
 
 	public int updateArticle(ArticleVO changeArticle) {
@@ -318,6 +343,8 @@ public class ArticleDAO {
 	      
 	   }
 
+	
+
 	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {
 		if (rs != null) {
 			try {
@@ -346,6 +373,7 @@ public class ArticleDAO {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
+
 
 
 

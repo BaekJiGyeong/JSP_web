@@ -1,0 +1,160 @@
+package com.ktds.jgbaek.util;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+public class MultipartHttpServletRequest {
+
+	private HttpServletRequest request;
+	private List<FileItem> items;
+	
+	public MultipartHttpServletRequest(HttpServletRequest request) {
+		this.request = request;
+		
+		// Create a factory for disk-based file items
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+
+		// Configure a repository (to ensure a secure temp location is used)
+		ServletContext servletContext = request.getServletContext();
+		File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+		factory.setRepository(repository);
+
+		// Create a new file upload handler
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		upload.setHeaderEncoding("UTF-8"); 
+		
+		try {
+			// 인코딩 해서 파일을 업로드한다.
+			items = upload.parseRequest(request);
+		} catch (FileUploadException e) {
+			// 인코딩 실패시 그냥 원본 파일을 넘긴다.
+			throw new RuntimeException(e.getMessage(), e);
+		}
+	}
+	
+	public String getParameter(String name) {
+		for ( FileItem fileItem : items ) {
+			if ( fileItem.getFieldName().equals(name) )  {
+				try {
+					return fileItem.getString("UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					return fileItem.getString();
+				}
+			}
+		}
+		return null;
+	}
+	
+	public List<String> getParameterValue(String name) {
+		List<String> values = new ArrayList<String>();
+		
+		for ( FileItem fileItem : items ) {
+			if ( fileItem.getFieldName().equals(name) )  {
+				try {
+					// 이름이 같으면 리스트로 만들어 파일을 넘긴다.
+					values.add(fileItem.getString("UTF-8"));
+				} catch (UnsupportedEncodingException e) {
+					values.add(fileItem.getString());
+				}
+			}
+		}
+		return values;
+	}
+	
+	public HttpSession getSession() {
+		return request.getSession();
+	}
+	
+	public RequestDispatcher getRequestDispatcher(String jspPage) {
+		return request.getRequestDispatcher(jspPage);
+	}
+	
+	// 업로드한 파일을 가져오기
+	public MultipartFile getFile(String name) {
+		MultipartFile file = new MultipartFile();
+		
+		for ( FileItem fileItem : items ) {
+			if ( fileItem.getFieldName().equals(name) )  {
+				file.setFileName(fileItem.getName());
+				file.setFileSize(fileItem.getSize());
+				// 어떤 형식
+				file.setContentType(fileItem.getContentType());
+				try {
+					// 파일의 내용
+					file.setFileContent(fileItem.getString("UTF-8").getBytes("UTF-8"));
+				} catch (UnsupportedEncodingException e) {
+					file.setFileContent(fileItem.getString().getBytes());
+				}
+			}
+		}
+		
+		return file;
+	}
+	
+	public class MultipartFile {
+		private String fileName;
+		private long fileSize;
+		private String contentType;
+		private byte[] fileContent;
+		
+		public String getFileName() {
+			return fileName;
+		}
+		public void setFileName(String fileName) {
+			this.fileName = fileName;
+		}
+
+		public long getFileSize() {
+			return fileSize;
+		}
+		public void setFileSize(long fileSize) {
+			this.fileSize = fileSize;
+		}
+
+		public String getContentType() {
+			return contentType;
+		}
+		public void setContentType(String contentType) {
+			this.contentType = contentType;
+		}
+
+		public void setFileContent(byte[] fileContent) {
+			this.fileContent = fileContent;
+		}
+		
+		public File write(String dest) {
+			File file = new File(dest);
+			try {
+				// 파일의 위치를 만들어줌
+				FileOutputStream fos = new FileOutputStream(file);
+				fos.write(fileContent);
+				fos.flush();
+				fos.close();
+				
+				return file;
+			} catch (FileNotFoundException e) {
+			} catch (IOException e) {
+			}			
+			return null;
+		}
+		
+	}
+	
+}
+
+

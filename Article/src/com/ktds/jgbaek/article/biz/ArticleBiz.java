@@ -8,6 +8,7 @@ import com.ktds.jgbaek.article.dao.ArticleDAO;
 import com.ktds.jgbaek.article.vo.ArticleListVO;
 import com.ktds.jgbaek.article.vo.ArticleSearchVO;
 import com.ktds.jgbaek.article.vo.ArticleVO;
+import com.ktds.jgbaek.util.MultipartHttpServletRequest.MultipartFile;
 import com.ktds.jgbaek.util.web.Paging;
 
 public class ArticleBiz {
@@ -59,12 +60,12 @@ public class ArticleBiz {
 		articleDAO.deleteArticle(articleId);
 	}
 
-	public boolean write(ArticleVO article) {
+	public int write(ArticleVO article) {
 		String description = article.getDescript();
 		description = description.replaceAll("\n", "<br/>");
 		article.setDescript(description);
-		articleDAO.writeArticle(article);
-		return article != null;
+		int articleId = articleDAO.writeArticle(article);
+		return articleId;
 
 	}
 
@@ -96,5 +97,7 @@ public class ArticleBiz {
 			return articleDAO.updateArticle(changeArticle) > 0;
 		}
 	}
+
+	
 
 }

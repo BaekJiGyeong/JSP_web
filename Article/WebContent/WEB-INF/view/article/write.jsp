@@ -39,7 +39,7 @@
 	
 </script>    
 
-<form id="writeForm">
+<form id="writeForm" enctype="multipart/form-data">
 	<table>
 		<tr>
 			<td>Title</td>
@@ -53,6 +53,12 @@
 				<textarea id="description" name="description" style="width: 250px; height:150px">${article.descript}</textarea>
 			</td>
 		</tr>	
+		<tr>
+			<td>업로드</td>
+			<td>
+				<input type="file" id="file" name="file"/>
+			</td>
+		</tr>
 	</table>	
 	
 	<c:if test="${empty article}">

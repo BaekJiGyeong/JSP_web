@@ -1,5 +1,6 @@
 package com.ktds.jgbaek.article.web;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -9,18 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ktds.jgbaek.article.biz.ArticleBiz;
-import com.ktds.jgbaek.article.dao.ArticleDAO;
 import com.ktds.jgbaek.article.vo.ArticleVO;
-import com.ktds.jgbaek.member.dao.MemberDAO;
+import com.ktds.jgbaek.file.biz.FileBiz;
 
 public class DetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ArticleBiz articleBiz;
+	private FileBiz fileBiz;
 
     public DetailServlet() {
         super();
         articleBiz = new ArticleBiz();
-       
+        fileBiz = new FileBiz();       
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

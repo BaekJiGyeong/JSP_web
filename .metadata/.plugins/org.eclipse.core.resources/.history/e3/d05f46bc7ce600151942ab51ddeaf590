@@ -1,0 +1,81 @@
+package com.ktds.jgbaek.article.web;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+import com.ktds.jgbaek.article.biz.ArticleBiz;
+import com.ktds.jgbaek.article.vo.ArticleVO;
+import com.ktds.jgbaek.member.vo.MemberVO;
+
+public class DoWriteServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private ArticleBiz articleBiz;
+  
+    public DoWriteServlet() {
+        super();
+        articleBiz = new ArticleBiz();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		this.doPost(request, response);
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// Create a factory for disk-based file items
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+
+		// Configure a repository (to ensure a secure temp location is used)
+		ServletContext servletContext = this.getServletConfig().getServletContext();
+		File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+		factory.setRepository(repository);
+
+		// Create a new file upload handler
+		ServletFileUpload upload = new ServletFileUpload(factory);
+
+		// Parse the request
+		try {
+			List<FileItem> items = upload.parseRequest(request);
+			for ( FileItem fileItem : items ) {
+				// 파라미터의 명
+				System.out.println(fileItem.getFieldName());
+				System.out.println(fileItem.getName());
+				System.out.println(fileItem.getContentType());
+				System.out.println(fileItem.getString());
+			}
+		} catch (FileUploadException e) { 
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		
+		
+		HttpSession session = request.getSession();
+		MemberVO loginMember = (MemberVO) session.getAttribute("_MEMBER_");
+		
+		String title = request.getParameter("title");
+		String description = request.getParameter("description");
+		
+		ArticleVO writeArticle = new ArticleVO();
+		writeArticle.setMemberId(loginMember.getMemberId());
+		writeArticle.setTitle(title);
+		writeArticle.setDescript(description);
+		
+		boolean isWriteSuccess = articleBiz.write(writeArticle);
+		
+		response.sendRedirect("/list");
+	}
+
+}
