@@ -33,6 +33,7 @@
 		<item value="true" key="WizardZipFileResourceExportPage1.STORE_COMPRESS_CONTENTS_ID"/>
 		<item value="true" key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID"/>
 		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="C:\Users\206-001\Desktop\과제제출Export\Article3.zip"/>
 			<item value="C:\Users\206-001\Desktop\과제제출Export\Article2.zip"/>
 			<item value="C:\Users\206-001\Desktop\과제제출Export\Article.zip"/>
 			<item value="C:\Users\206-001\Desktop\과제제출Export\Project0303.zip"/>

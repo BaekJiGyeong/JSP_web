@@ -9,8 +9,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
+<div id="list" align="center">
+<br/>
  총 ${articles.paging.totalArticleCount} 건의 게시물이 있습니다.
+<br/><br/>
+
 <table border="2">
 	<tr>
 		<th>ARTICLE_ID</th>
@@ -23,7 +28,14 @@
 <c:forEach items="${ articles.articleList }" var="articles">
 	<tr>
 		<td>${ articles.articleId }</td>
-		<td><a href="/detail?articleId=${articles.articleId }">${ articles.title }</td>
+		<td>
+			<a href="/detail?articleId=${articles.articleId }">
+				${ articles.title }
+			</a>
+			<c:if test="${articles.fileCount gt 0 }">
+				[${articles.fileCount}개의 첨부파일 있음]
+			</c:if>
+		</td>
 		<td>${ articles.nickName }</td>
 		<td>${ articles.hits }</td>
 		<td>${ articles.recommends }</td>
@@ -40,11 +52,12 @@
 	</td>
 </tr>
 </table>
-
-<a href="/write">글쓰기</a><br/>
+<br/>
+<a href="/write">글쓰기 </a>
 <a href="/logout">로그아웃</a>
 
 
 </br>
+</div>
 
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>

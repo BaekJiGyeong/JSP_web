@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+
+#btnLogin{
+	height:24px;
+	float:right;
+}
+#btnJoin{
+	height:24px;
+	float:right;
+}
+
+div#login {
+	text-align:right;
+}
+
+
+div#login input{
+	margin-bottom:10px;
+	float:right;
+}

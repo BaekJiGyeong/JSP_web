@@ -2,8 +2,15 @@
 
 
 #btnLogin{
-	height:24px;
+	height:40px;
 	float:right;
+	margin-right:10px;
+}
+#btnJoin{
+	height:40px;
+	float:right;
+	margin-right:10px;
+	
 }
 
 div#login {

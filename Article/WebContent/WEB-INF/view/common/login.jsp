@@ -39,7 +39,7 @@
 			$("#btnLogin").click();
 		}
 
-		$("#join").click(function() {
+		$("#btnJoin").click(function() {
 			location.href = "/registerMember";
 		});
 
@@ -47,13 +47,15 @@
 </script>
 
 <div id="login">
-	<input type="button" id="join" value="Join" />
+	<img tabindex="3" src="/resource/img/join.png" id="btnJoin" />
 	<form id="loginForm">
-		<img tabindex="3" src="/resource/img/login.png" id="btnLogin" /> <input
-			type="password" tabindex="2" id="userPw" name="userPw"
-			placeholder="Password" /> <input type="text" tabindex="1"
+		<img tabindex="3" src="/resource/img/login.png" id="btnLogin" />
+		<input type="password" tabindex="2" id="userPw" name="userPw"
+			placeholder="Password" />
+		<input type="text" tabindex="1"
 			id="userId" name="userId" placeholder="ID" />
 	</form>
 
 </div>
 <div class="clear"></div>
+</div>

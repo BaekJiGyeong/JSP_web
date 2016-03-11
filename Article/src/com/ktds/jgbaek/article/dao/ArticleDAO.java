@@ -46,7 +46,8 @@ public class ArticleDAO {
 				article.setNickName(rs.getString("NICK_NAME"));
 				article.setHits(rs.getInt("HITS"));
 				article.setRecommends(rs.getInt("RECOMMENDS"));
-
+				article.setFileCount(rs.getInt("FILE_COUNT"));
+				System.out.println(rs.getInt("FILE_COUNT"));
 				articles.add(article);
 			}
 		} catch (
@@ -328,6 +329,8 @@ public class ArticleDAO {
 	            article.setNickName(rs.getString("NICK_NAME"));
 	            article.setHits(rs.getInt("HITS"));
 	            article.setRecommends(rs.getInt("RECOMMENDS"));
+	            article.setFileCount(rs.getInt("FILE_COUNT"));
+	            
 	            
 	            articleList.add(article);
 	         }

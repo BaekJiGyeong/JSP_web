@@ -147,4 +147,24 @@
     <servlet-name>DoModifyServlet</servlet-name>
     <url-pattern>/doModify</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DownloadServlet</display-name>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>com.ktds.jgbaek.article.web.DownloadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/download</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoWriteReplyServlet</display-name>
+    <servlet-name>DoWriteReplyServlet</servlet-name>
+    <servlet-class>com.ktds.jgbaek.reply.web.DoWriteReplyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoWriteReplyServlet</servlet-name>
+    <url-pattern>/doWriteReply</url-pattern>
+  </servlet-mapping>
 </web-app>

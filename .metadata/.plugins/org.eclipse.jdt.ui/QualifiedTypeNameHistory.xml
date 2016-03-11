@@ -11,7 +11,6 @@
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="com.ktds.jgbaek.dao.JobsDAO"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.ktds.jgbaek.vo.JobsVO"/>
 <fullyQualifiedTypeName name="com.ktds.jgbaek.dao.LocationsDAO"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
@@ -26,11 +25,15 @@
 <fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
 <fullyQualifiedTypeName name="org.apache.commons.fileupload.FileItem"/>
 <fullyQualifiedTypeName name="org.apache.commons.fileupload.servlet.ServletFileUpload"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="org.apache.commons.fileupload.disk.DiskFileItemFactory"/>
 <fullyQualifiedTypeName name="com.ktds.jgbaek.util.CloneUtil"/>
 <fullyQualifiedTypeName name="org.apache.tomcat.jni.File"/>
 <fullyQualifiedTypeName name="com.ktds.jgbaek.article.vo.ArticleVO"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.ktds.jgbaek.file.vo.FileVO"/>
+<fullyQualifiedTypeName name="com.ktds.jgbaek.util.DownloadUtil"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>
