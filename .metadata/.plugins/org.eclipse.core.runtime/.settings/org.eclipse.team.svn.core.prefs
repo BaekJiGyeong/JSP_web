@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
 externalMigrateFromAuthorizationDatabase/isMigrated=true
 migrateFromAuthorizationDatabase/isMigrated=true
+repositories/10d196de4fea00151a57f38952d8436f=10d196de4fea00151a57f38952d8436f;https\://dev.naver.com/svn/ktdsmuco/;https\://dev.naver.com/svn/ktdsmuco/;branches;tags;trunk;true;47874683-f72d-0510-85ea-de864ca76ce3;https\://dev.naver.com/svn/ktdsmuco;;false;;;0
 repositories/50e21c1ab5e5001517329d16a5e6adf1=50e21c1ab5e5001517329d16a5e6adf1;https\://dev.naver.com/svn/seccoding;https\://dev.naver.com/svn/seccoding;branches;tags;trunk;true;a37014ce-9911-0510-b341-865d41d68d9d;https\://dev.naver.com/svn/seccoding;;false;;;0

@@ -1,0 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div id="tomNavi">
+	<ul id="topMenu">
+		<li>Home</li>
+		<li>게시글 관리</li>
+		<li>메뉴관리</li>
+	</ul>
+</div>

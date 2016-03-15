@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/project2.css"/>"/>
+<title>Insert title here</title>
+</head>
+<body>
+<div id="wrapper">
+
+	<div id="col1">
+		<div id="col1row1"></div>
+	</div>
+	<div id="col2">
+		<div id="col2row1"></div>
+		<div id="col2row2"></div>
+	</div>
+	</div>
+	
+
+
+</body>
+</html>

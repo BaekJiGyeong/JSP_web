@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1458003861972_3" label="Article-Admin" name="Article-Admin">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Article-admin" type="4"/>
+</workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1456277476743_0" label="Window Working Set" name="Aggregate for window 1456277476743"/>
 </workingSetManager>
