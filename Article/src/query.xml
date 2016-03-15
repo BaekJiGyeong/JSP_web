@@ -130,6 +130,7 @@
 					, DESCRIPT=?
 			WHERE	ARTICLE_ID=?		
 		</updateArticle>
+		
 		<getLatesArticleId>
 			SELECT	ARTICLE_ID_SEQ.CURRVAL
 			FROM	DUAL
@@ -150,6 +151,7 @@
 		                        , ?
 		        	            )
 		</uploadFile>
+		
 		<getFileListByArticleId>
 			SELECT	FILE_ID
 					, FILE_NAME
@@ -157,7 +159,9 @@
 			FROM	FILES
 			WHERE	ARTICLE_ID = ?
 		</getFileListByArticleId>
+		
 	</file>
+	
 	<reply>
 		<insertReply>
 			INSERT INTO REPLIES (
@@ -182,6 +186,31 @@
 										, 0
 										 )
 		</insertReply>
+		
+		<insertReReply>
+			INSERT INTO REPLIES (
+										   REPLY_ID
+										   , ARTICLE_ID
+										   , MEMBER_ID
+										   , DESCRIPTION
+										   , GROUP_ID
+										   , PARENT_REPLY_ID
+										   , DEPTH
+										   , ORDER_NO
+										 ) 
+			VALUES 
+										( 
+										REPLY_ID_SEQ.NEXTVAL
+										, ?
+										, ?
+										, ?
+										, ?
+										, ?
+										, ?
+										, ?
+										 )
+		</insertReReply>
+		
 		<getReplyListByArticleId>
 			SELECT	REPLY_ID
 					, ARTICLE_ID
@@ -196,9 +225,41 @@
 					, MEMBERS M
 			WHERE	R.MEMBER_ID = M.MEMBER_ID
 			AND		R.ARTICLE_ID = ?
-			ORDER	BY GROUP_ID DESC
+			ORDER	BY GROUP_ID ASC
 					, ORDER_NO ASC
 		</getReplyListByArticleId>
+		
+		<selectCountParentReplyId>
+			SELECT	COUNT(REPLY_ID)
+			FROM	REPLIES
+			WHERE	PARENT_REPLY_ID = ?
+		</selectCountParentReplyId>
+		
+		<selectMaxOrderNoByParentReplyId>
+			SELECT	ORDER_NO
+		   	FROM	(
+						SELECT	DISTINCT *
+						FROM	REPLIES
+						START	WITH REPLY_ID = ?
+						CONNECT	BY PRIOR REPLY_ID = PARENT_REPLY_ID
+						ORDER	BY ORDER_NO DESC
+					)
+			WHERE	ROWNUM = 1 
+			
+		</selectMaxOrderNoByParentReplyId>
+		
+		<selectlatestOrderNoByParentReplyId>
+			SELECT	ORDER_NO
+			FROM	REPLIES
+			WHERE	REPLY_ID = ?
+		</selectlatestOrderNoByParentReplyId>
+
+		<updateOrderNoByGroupId>
+			UPDATE	REPLIES
+			SET		ORDER_NO = ORDER_NO+1
+			WHERE	ORDER_NO >= ?
+			AND		GROUP_ID = ?
+		</updateOrderNoByGroupId>
 	</reply>
 	
 </query>

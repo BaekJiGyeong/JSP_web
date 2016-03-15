@@ -5,7 +5,64 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-03-09T09:03:00Z</updated>
+  <updated>2016-03-11T09:38:00Z</updated>
+  <entry>
+    <title>Reactor Core 2.5 becomes a unified Reactive Foundation on Java 8</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/03/11/reactor-core-2-5-becomes-a-unified-reactive-foundation-on-java-8" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Stephane Maldini</name>
+    </author>
+    <id>tag:spring.io,2016-02-21:2393</id>
+    <updated>2016-03-11T09:38:00Z</updated>
+    <content type="html">&lt;p&gt;Following our &lt;a href="https://spring.io/blog/2016/02/16/reactor-2-5-a-second-generation-reactive-foundation-for-the-jvm"&gt;Reactor 2.5 introduction&lt;/a&gt; a few weeks ago, we are delighted to announce our next major milestone: &lt;a href="http://github.com/reactor/reactor-core"&gt;Reactor Core 2.5.0.M2&lt;/a&gt;. This is again the result of a collective effort laser focused on API design and efficiency. &lt;/p&gt;&lt;h1&gt;&lt;a href="#a-meaningful-composition-api" class="anchor" name="a-meaningful-composition-api"&gt;&lt;/a&gt;A meaningful composition API&lt;/h1&gt;
+&lt;p&gt;The former &lt;strong&gt;reactor-stream&lt;/strong&gt; module has been merged into Reactor Core 2.5.0.M2. &lt;a href="http://projectreactor.io/core/docs/api/reactor/core/publisher/Flux.html"&gt;Flux&lt;/a&gt; and &lt;a href="http://projectreactor.io/core/docs/api/reactor/core/publisher/Mono.html"&gt;Mono&lt;/a&gt; respectively representing &lt;strong&gt;0..N&lt;/strong&gt; and &lt;strong&gt;0..1&lt;/strong&gt; sequence types now cover a solid range of operations for the following categories:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Cold-to-Hot or Multicasting : &lt;code&gt;publish&lt;/code&gt;, &lt;code&gt;publishNext&lt;/code&gt;, &lt;code&gt;cache&lt;/code&gt;, &lt;code&gt;multicast&lt;/code&gt;&amp;hellip;&lt;/li&gt;
+  &lt;li&gt;Aggregating/Reducing (Transforming) : &lt;code&gt;buffer&lt;/code&gt;, &lt;code&gt;reduce&lt;/code&gt;, &lt;code&gt;scan&lt;/code&gt;, &lt;code&gt;window&lt;/code&gt;, &lt;code&gt;sample&lt;/code&gt;&amp;hellip;&lt;/li&gt;
+  &lt;li&gt;Filtering : &lt;code&gt;filter&lt;/code&gt;, &lt;code&gt;exists&lt;/code&gt;, &lt;code&gt;single&lt;/code&gt;&amp;hellip;&lt;/li&gt;
+  &lt;li&gt;Conditioning : &lt;code&gt;timeout&lt;/code&gt;, &lt;code&gt;take&lt;/code&gt;, &lt;code&gt;takeUntil&lt;/code&gt;, &lt;code&gt;skip&lt;/code&gt;, &lt;code&gt;skipUntil&lt;/code&gt;&amp;hellip;&lt;/li&gt;
+  &lt;li&gt;Combining : &lt;code&gt;withLatestFrom&lt;/code&gt;, &lt;code&gt;combineLatest&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Backpressuring : &lt;code&gt;onBackpressureDrop&lt;/code&gt;, &lt;code&gt;onBackpressureLatest&lt;/code&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;While the capabilities existed, we are now using the hyper efficient &lt;a href="http://github.com/reactor/reactive-streams-commons"&gt;Reactive Streams Commons&lt;/a&gt; operator implementations.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/reactor/projectreactor.io/c67e756cc8e17cc52b6845d216645a4f81571fc0/src/main/static/assets/img/org3.png" /&gt;&lt;/p&gt;&lt;h1&gt;&lt;a href="#designed-for-java-8-and-beyond" class="anchor" name="designed-for-java-8-and-beyond"&gt;&lt;/a&gt;Designed for Java 8 and beyond&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="http://projectreactor.io"&gt;All Reactor 2.5 projects&lt;/a&gt; have been upgraded to Java 8&lt;/strong&gt;. While the JVM market is getting standardized on Java 8, we see no reason to delay further our transition. Let&amp;rsquo;s enumerate the benefits :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;All &amp;ldquo;backported&amp;rdquo; functional callbacks in &lt;code&gt;reactor.fn&lt;/code&gt; have been replaced by &lt;code&gt;java.util.function&lt;/code&gt;. As a result Reactor offers a standard interactive contract and a competitive surface API.&lt;/li&gt;
+  &lt;li&gt;Convert &lt;code&gt;Flux&lt;/code&gt; to/from &lt;code&gt;java.util.stream.Stream&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Convert &lt;code&gt;Mono&lt;/code&gt; to/from &lt;code&gt;CompletableFuture&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Safely create &lt;code&gt;Mono&lt;/code&gt; from &lt;code&gt;Optional&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Sane time period support with &lt;code&gt;Duration&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Dropped shadowed JSR 166 backport for ConcurrentHashMap use specially affecting &lt;a href="http://github.com/reactor/reactor-addons"&gt;Reactor Addons&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;A massive step closer to the programming experience scheduled into Spring Framework 5, itself building on Java 8.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Some Java 8 extractors and generators in action:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;java.util.stream.Stream&amp;lt;String&amp;gt; stream = &#xD;
+    Mono.fromCompletableFuture(someCompletableFuture)&#xD;
+        .timeout(Duration.ofSeconds(30))&#xD;
+        .log(&amp;quot;hello&amp;quot;)&#xD;
+        .flatMap( pojo -&amp;gt; Flux.just(pojo.getId(), pojo.getName())&#xD;
+        .stream();&#xD;
+&#xD;
+Flux.fromStream(stream)&#xD;
+    .delay(1000)&#xD;
+    .consume(System.out::println);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We could envision a backport for Android compatibility later, still our focus for now is on Java applications.&lt;/p&gt;&lt;h1&gt;&lt;a href="#highlights" class="anchor" name="highlights"&gt;&lt;/a&gt;Highlights&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Updated &lt;a href="http://projectreactor.io/core/docs/api/"&gt;Javadoc&lt;/a&gt; with more Marble Diagram illustrations.&lt;/li&gt;
+  &lt;li&gt;100% &lt;code&gt;Flux&lt;/code&gt; and &lt;code&gt;Mono&lt;/code&gt; operational design based on the collaboration effort &lt;a href="http://github.com/reactor/reactive-streams-commons"&gt;Reactive Streams Commons&lt;/a&gt;&lt;br/&gt;&amp;ndash; &lt;a href="http://akarnokd.blogspot.co.uk/2016/03/rxjava-design-retrospect.html"&gt;Build on years of experience&lt;/a&gt; from &lt;code&gt;Reactive4Java&lt;/code&gt;, &lt;code&gt;RxJava&lt;/code&gt; and &lt;code&gt;Reactor&lt;/code&gt;&lt;br/&gt;&amp;ndash; Efficient, really efficient, supports even further efficiency with operation fusion&lt;br/&gt;&amp;ndash; More Performance benchmarks from &lt;a href="https://github.com/reactor/reactive-streams-commons/tree/master/src/jmh/java/reactivestreams/commons"&gt;Reactive Streams Commons&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Available concurrency and prefetch arguments for operators with queue&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Mono&lt;/code&gt; publish-subscribe : &lt;code&gt;MonoProcessor&amp;lt;T&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;More tests : combining current Reactive Streams Commons &lt;strong&gt;(879)&lt;/strong&gt; and Core &lt;strong&gt;(1153&lt;/strong&gt;) plus our internal early adopters such as Spring Framework 5 and Cloud Foundry Java Client.&lt;/li&gt;
+  &lt;li&gt;Introspectable : Monitor and Export any Reactor flow as JSON with &lt;code&gt;Flux#debug&lt;/code&gt; and &lt;code&gt;Mono#debug&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Refer to the &lt;a href="http://github.com/reactor/reactor-core"&gt;issues tracker&lt;/a&gt; for any issue including known issues &lt;a href="https://github.com/reactor/reactor-core/issues?q=is%3Aissue+is%3Aclosed+milestone%3A2.5.0.RC1"&gt;already fixed in snapshot artefacts post M2&lt;/a&gt;.&lt;/p&gt;&lt;h1&gt;&lt;a href="#what-rsquo-s-on-next" class="anchor" name="what-rsquo-s-on-next"&gt;&lt;/a&gt;What&amp;rsquo;s (on)Next ?&lt;/h1&gt;
+&lt;p&gt;With this release we have a foundation we think will be useful for library and application developers alike. We are ready to collect more feedbacks while our next stop will be on &lt;a href="http://github.com/reactor/reactor-io"&gt;Reactor IO&lt;/a&gt; : Reactor Aeron and Reactor Netty. There are great plans stirring for months now for these two Reactor IO modules to help you cross network boundaries with backpressure factored-in ! The two inspiring traits are the same as in Reactor Core : Focus on API and Efficiency, no extra ceremony or academic background required.&lt;/p&gt;
+&lt;p&gt;In parallel we are doubling our effort on creating various &lt;em&gt;starting experiences&lt;/em&gt;, expect some blogging, guides and close collaboration with the Spring Boot team to get this awesomeness right at your fingertip with little fuss.&lt;/p&gt;
+&lt;p&gt;Also, expect reactive coverage at this year¡¯s &lt;a href="http://springio.net"&gt;Spring I/O Barcelona&lt;/a&gt;. We have the pleasure to kick-off Day-2 schedule with &lt;a href="https://twitter.com/rstoya05"&gt;Rossen Stoyanchev&lt;/a&gt; and we will be discussing application design, the reactive way of course.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Webinar: Spring Boot and Ratpack Web Framework</title>
     <link rel="alternate" href="https://spring.io/blog/2016/03/09/webinar-spring-boot-and-ratpack-web-framework" />
@@ -377,19 +434,5 @@ public class FooService {&#xD;
     <updated>2016-02-26T14:08:25Z</updated>
     <content type="html">&lt;p&gt;I&amp;rsquo;m pleased to announce the release of Spring Security 4.0.4.RELEASE. This release is the fourth maintenance release of the 4.0 line. It provides minor fixes along with a fix for backwards compatibility of Spring Framework 4.1.x. For complete details on the release, refer to the &lt;a href="https://github.com/spring-projects/spring-security/issues?utf8=%E2%9C%93&amp;q=milestone%3A4.0.4"&gt;Change Log&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://projects.spring.io/spring-security/"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-security/site/docs/4.0.4.RELEASE/reference/htmlsingle/"&gt;Reference&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-security/site/docs/4.0.4.RELEASE/guides/html5/"&gt;Guides&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Boot 1.3.3 and 1.4.0.M1 available now</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/02/26/spring-boot-1-3-3-and-1-4-0-m1-available-now" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>St?phane Nicoll</name>
-    </author>
-    <id>tag:spring.io,2016-02-26:2402</id>
-    <updated>2016-02-26T13:05:00Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the team, it is my pleasure to announce that Spring Boot 1.3.3 and 1.4.0.M1 have been released today. Spring Boot 1.3.3 includes &lt;a href="https://github.com/spring-projects/spring-boot/issues?q=milestone%3A1.3.3"&gt;60 fixes and a selection of improvements and dependency upgrades&lt;/a&gt;. This release is a recommended upgrade for all users.&lt;/p&gt;
-&lt;p&gt;Spring Boot 1.4.0.M1 is available in the &lt;a href="http://repo.springsource.org/milestone"&gt;Spring milestone repository&lt;/a&gt; and provides a number of &lt;a href="https://github.com/spring-projects/spring-boot/issues?q=milestone%3A1.4.0.M1"&gt;improvements and new features&lt;/a&gt;. For a complete list of changes, and for upgrade instructions, see the &lt;a href="http://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.4-Release-Notes"&gt;Spring Boot 1.4 Release Notes&lt;/a&gt; on the WIKI. The &lt;a href="http://docs.spring.io/spring-boot/docs/1.4.0.M1/reference/htmlsingle/"&gt;reference documentation&lt;/a&gt; has also been updated.&lt;/p&gt;
-&lt;p&gt;Thanks again to everyone that has contributed to the release! Please give it a go and report any problems using &lt;a href="http://github.com/spring-projects/spring-boot/issues"&gt;the project Issue tracker&lt;/a&gt; page.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

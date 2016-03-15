@@ -9,8 +9,9 @@ body, input, div, span, p, a, td, th, caption, lable, h1, h2, h3, h4, h5, h6, te
 
 table {
 	background-color: #fff0f8;
-	width : 50%;
+	
 }
+
 
 img {
 	/* 이미지 주변의 파란 줄 제거 */
@@ -24,6 +25,10 @@ body {
 
 input {
 	margin-right: 10px;
+}
+th {
+	background-color: #400040;
+	color:#ffffff;
 }
 
 div#wrapper {
@@ -44,9 +49,12 @@ div#header div {
 	float: left;
 }
 
-div#list {
+div#listcss {
 	background-color: #ffa4d1;
 	padding : 10px;
+}
+div#reply{
+	width: 50%;
 }
 
 div.clear{

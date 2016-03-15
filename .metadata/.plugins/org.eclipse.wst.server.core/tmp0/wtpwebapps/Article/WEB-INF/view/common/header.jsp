@@ -17,7 +17,7 @@
 	
 		<div id="header">
 		
-			<img src="/resource/img/icon.png" /> <div>안녕하세요.</div>
+			<a href="/list"><img src="/resource/img/icon.png" /></a> <div>안녕하세요.</div>
 		
 		</div>
 		<div class="clear"></div>

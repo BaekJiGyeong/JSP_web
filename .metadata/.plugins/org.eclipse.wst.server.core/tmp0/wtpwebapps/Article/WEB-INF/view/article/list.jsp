@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<div id="list" align="center">
+<div id="listcss" align="center">
 <br/>
  총 ${articles.paging.totalArticleCount} 건의 게시물이 있습니다.
 <br/><br/>
@@ -53,8 +53,8 @@
 </tr>
 </table>
 <br/>
-<a href="/write">글쓰기 </a>
-<a href="/logout">로그아웃</a>
+<a href="/write"><img src="/resource/img/write.png" id="btnWrite" /></a>
+<a href="/logout"><img src="/resource/img/exit.png" id="btnExit" /></a>
 
 
 </br>

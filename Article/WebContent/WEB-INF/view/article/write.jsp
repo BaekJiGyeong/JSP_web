@@ -39,8 +39,9 @@
 	
 </script>    
 
+<div id="listcss" align="center">
 <form id="writeForm" enctype="multipart/form-data">
-	<table>
+	<table >
 		<tr>
 			<td>Title</td>
 			<td>
@@ -60,19 +61,19 @@
 			</td>
 		</tr>
 	</table>	
-	
+	<br/>
 	<c:if test="${empty article}">
-	<input type="button" id="doWrite" value="등록!"/></br>
-	<input type="reset" value="다시 쓰기"/></br>
+	<input type="button" id="doWrite" value="등록!"/>
+	<input type="reset" value="다시 쓰기"/>
 	</c:if>
 	
 	<c:if test="${not empty article}">
 	<input type="hidden" name="articleId" value="${article.articleId}"/>
-	<input type="button" id="doModify" value="수정!"/></br>
-	<input type="button" id="reset" value="다시 쓰기"/></br>
+	<input type="button" id="doModify" value="수정!"/>
+	<input type="button" id="reset" value="다시 쓰기"/>
 	</c:if>
 	
 	<input type="button" id="cancel" value="취소"/></br>
 </form>
-
+</div>
 <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>

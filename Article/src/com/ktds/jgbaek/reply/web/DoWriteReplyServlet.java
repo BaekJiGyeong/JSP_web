@@ -34,7 +34,6 @@ public class DoWriteReplyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendError(HttpServletResponse.SC_FORBIDDEN, "잘못된 요청입니다.");
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -45,10 +44,12 @@ public class DoWriteReplyServlet extends HttpServlet {
 		int parentReplyId = Integer.parseInt(request.getParameter("parentReplyId"));
 		int groupId = Integer.parseInt(request.getParameter("groupId"));
 		int orderNo = Integer.parseInt(request.getParameter("orderNo"));
+		int replyId = Integer.parseInt(request.getParameter("replyId"));
 		String reply = request.getParameter("description");
 		
+		System.out.println(depth);
+		System.out.println(parentReplyId);
 		
-		System.out.println("값"+reply);
 		ReplyVO replyInfo = new ReplyVO();
 		
 		replyInfo.setArticleId(articleId);
@@ -57,20 +58,16 @@ public class DoWriteReplyServlet extends HttpServlet {
 		replyInfo.setGroupId(groupId);
 		replyInfo.setOrderNo(orderNo);
 		replyInfo.setDescription(reply);
-		
+		replyInfo.setReplyId(replyId);
 		
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("_MEMBER_");
 		
 		if ( member != null ) {
 			replyInfo.setMemberId(member.getMemberId());
-			
 		}
-		
 		replyBiz.addNewReplyDepthOne(replyInfo);
 		response.sendRedirect("/detail?articleId=" +articleId);
-		
-		
 	}
 
 }
