@@ -1,5 +1,6 @@
 package com.ktds.jgbaek.article.biz;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,23 +27,32 @@ public class ArticleBiz {
 	}
 
 	public ArticleListVO getArticleList(ArticleSearchVO searchVO) {
-	      
-	      int allArticleCount = articleDAO.getAllArticleCount();
-	      Paging paging = new Paging();
-	      paging.setTotalArticleCount(allArticleCount);
-	      paging.setPageNumber(searchVO.getPageNo() + "");
-	      
-	      searchVO.setStartIndex(paging.getStartArticleNumber());
-	      searchVO.setEndIndex(paging.getEndArticleNumber());
-	      
-	      List<ArticleVO> articles = articleDAO.getAllArticleList(searchVO);
-	      
-	      ArticleListVO articleList = new ArticleListVO();
-	      articleList.setArticleList(articles);
-	      articleList.setPaging(paging);
-	      
-	      return articleList;
-	   }
+
+		int allArticleCount = 0;
+		
+		if (searchVO.getSearchCategory().equals("memberId")) {
+			allArticleCount = articleDAO.getArticleCountSearchByMemberId(searchVO);
+		} else if (searchVO.getSearchCategory().equals("nickName")) {
+			allArticleCount = articleDAO.getArticleCountSearchByNickName(searchVO);
+		} else {
+			allArticleCount = articleDAO.getAllArticleCount(searchVO);
+		}
+		Paging paging = new Paging();
+		paging.setTotalArticleCount(allArticleCount);
+		paging.setPageNumber(searchVO.getPageNo() + "");
+
+		searchVO.setStartIndex(paging.getStartArticleNumber());
+		searchVO.setEndIndex(paging.getEndArticleNumber());
+
+		
+		List<ArticleVO> articles = articleDAO.getAllArticleList(searchVO);
+		
+		ArticleListVO articleList = new ArticleListVO();
+		articleList.setArticleList(articles);
+		articleList.setPaging(paging);
+
+		return articleList;
+	}
 
 	public ArticleVO getOneArticleByArticleId(int articleId) {
 		// 1. article id를 가진 article의 조회수를 update 한다.
@@ -107,13 +117,11 @@ public class ArticleBiz {
 	}
 
 	public void deleteArticles(String[] deleteArticleIds, MemberVO member) {
-		 if ( member.isAdmin() ) {
-	         for ( String articleId : deleteArticleIds ) {
-	            articleDAO.deleteArticle(Integer.parseInt(articleId));
-	         }
-	      }
+		if (member.isAdmin()) {
+			for (String articleId : deleteArticleIds) {
+				articleDAO.deleteArticle(Integer.parseInt(articleId));
+			}
+		}
 	}
-
-	
 
 }

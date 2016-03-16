@@ -2,11 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/view/common/header.jsp"></jsp:include>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<jsp:include page="/WEB-INF/view/article/leftMenu.jsp"></jsp:include>
+
 <script type="text/javascript" src="/resource/js/jquery-1.12.1.js"></script>
 <script type="text/javascript">
 

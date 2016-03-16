@@ -41,8 +41,26 @@
 			SELECT	COUNT(A.ARTICLE_ID)
 			FROM	ARTICLE A
 					, MEMBERS M
-			WHERE	A.MEMBER_ID = M.MEMBER_ID			
+			WHERE	A.MEMBER_ID = M.MEMBER_ID	
+			AND		(
+						TITLE LIKE '%'||?||'%'
+			OR			DESCRIPT LIKE '%'||?|| '%'							
+					)		
 		</getAllArticleCount>
+		<getArticleCountSearchByMemberId>
+			SELECT	COUNT(A.ARTICLE_ID)
+			FROM	ARTICLE A
+					, MEMBERS M
+			WHERE	A.MEMBER_ID = M.MEMBER_ID	
+			AND		M.MEMBER_ID LIKE '%'||?|| '%'		
+		</getArticleCountSearchByMemberId>
+		<getArticleCountSearchByNickName>
+			SELECT	COUNT(A.ARTICLE_ID)
+			FROM	ARTICLE A
+					, MEMBERS M
+			WHERE	A.MEMBER_ID = M.MEMBER_ID	
+			AND		NICK_NAME LIKE '%'||?|| '%'
+		</getArticleCountSearchByNickName>
 		
 		<getAllArticle>
 		SELECT	*
@@ -61,6 +79,10 @@
 									, FILES F
 							WHERE	A.MEMBER_ID = M.MEMBER_ID
 							AND     A.ARTICLE_ID = F.ARTICLE_ID(+)
+							AND		(
+										TITLE LIKE '%'||?||'%'
+							OR			DESCRIPT LIKE '%'||?|| '%'						
+									)
 							GROUP   BY A.ARTICLE_ID
 									, TITLE
 									, NICK_NAME
@@ -72,7 +94,64 @@
 				)
 		WHERE	RNUM >=?
 		</getAllArticle>
-		
+		<getArticleSearchByMemberId>
+		SELECT	*
+		FROM	(
+					SELECT	ROWNUM AS RNUM
+							, A.*
+					FROM	(
+							SELECT	A.ARTICLE_ID
+									, TITLE
+									, NICK_NAME
+									, HITS
+									, RECOMMENDS
+									, COUNT(FILE_ID) FILE_COUNT
+							FROM	ARTICLE A
+									, MEMBERS M
+									, FILES F
+							WHERE	A.MEMBER_ID = M.MEMBER_ID
+							AND     A.ARTICLE_ID = F.ARTICLE_ID(+)
+							AND		A.MEMBER_ID LIKE '%' || ? || '%'						
+							GROUP   BY A.ARTICLE_ID
+									, TITLE
+									, NICK_NAME
+									, HITS
+									, RECOMMENDS
+							ORDER	BY ARTICLE_ID DESC
+							) A
+					WHERE	ROWNUM &lt;=?
+				)
+		WHERE	RNUM >=?		
+		</getArticleSearchByMemberId>
+		<getArticleSearchByNickName>
+		SELECT	*
+		FROM	(
+					SELECT	ROWNUM AS RNUM
+							, A.*
+					FROM	(
+							SELECT	A.ARTICLE_ID
+									, TITLE
+									, NICK_NAME
+									, HITS
+									, RECOMMENDS
+									, COUNT(FILE_ID) FILE_COUNT
+							FROM	ARTICLE A
+									, MEMBERS M
+									, FILES F
+							WHERE	A.MEMBER_ID = M.MEMBER_ID
+							AND     A.ARTICLE_ID = F.ARTICLE_ID(+)
+							AND		NICK_NAME LIKE '%'||?|| '%'						
+							GROUP   BY A.ARTICLE_ID
+									, TITLE
+									, NICK_NAME
+									, HITS
+									, RECOMMENDS
+							ORDER	BY ARTICLE_ID DESC
+							) A
+					WHERE	ROWNUM &lt;=?
+				)
+		WHERE	RNUM >=?		
+		</getArticleSearchByNickName>
 		
 		<getOneArticleByArticleId>
 			SELECT	A.*
@@ -87,7 +166,7 @@
 			UPDATE ARTICLE
 			SET    HITS       = HITS+1
 			WHERE  ARTICLE_ID = ?		
-		</hitArticle>
+		</hitArticle> 
 		
 		<recommendArticle>
 			UPDATE ARTICLE
@@ -238,16 +317,11 @@
 		</selectCountParentReplyId>
 		
 		<selectMaxOrderNoByParentReplyId>
-			SELECT	ORDER_NO
-		   	FROM	(
-						SELECT	DISTINCT *
-						FROM	REPLIES
-						START	WITH REPLY_ID = ?
-						CONNECT	BY PRIOR REPLY_ID = PARENT_REPLY_ID
-						ORDER	BY ORDER_NO DESC
-					)
-			WHERE	ROWNUM = 1 
-			
+			SELECT	MAX(ORDER_NO)
+			FROM	REPLIES
+			START	WITH REPLY_ID = ?
+			CONNECT	BY PRIOR REPLY_ID = PARENT_REPLY_ID
+			ORDER	BY ORDER_NO DESC
 		</selectMaxOrderNoByParentReplyId>
 		
 		<selectlatestOrderNoByParentReplyId>

@@ -1,0 +1,129 @@
+package com.ktds.jgbaek.article.biz;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.ktds.jgbaek.article.dao.ArticleDAO;
+import com.ktds.jgbaek.article.vo.ArticleListVO;
+import com.ktds.jgbaek.article.vo.ArticleSearchVO;
+import com.ktds.jgbaek.article.vo.ArticleVO;
+import com.ktds.jgbaek.file.dao.FileDAO;
+import com.ktds.jgbaek.member.vo.MemberVO;
+import com.ktds.jgbaek.reply.dao.ReplyDAO;
+import com.ktds.jgbaek.util.web.Paging;
+
+public class ArticleBiz {
+
+	private ArticleDAO articleDAO;
+	private FileDAO fileDAO;
+	private ReplyDAO replyDAO;
+
+	public ArticleBiz() {
+		articleDAO = new ArticleDAO();
+		fileDAO = new FileDAO();
+		replyDAO = new ReplyDAO();
+	}
+
+	public ArticleListVO getArticleList(ArticleSearchVO searchVO) {
+
+		int allArticleCount = 0;
+		 if(searchVO.getSearchCategory().equals("content")){
+		      System.out.println("카테고리는"+searchVO.getSearchCategory());
+		      }
+		allArticleCount = articleDAO.getAllArticleCount(searchVO);
+		/*if (searchVO.getSearchCategory().equals("content")) {
+			allArticleCount = articleDAO.getAllArticleCount(searchVO);
+		} else if (searchVO.getSearchCategory().equals("memberId")) {
+			allArticleCount = articleDAO.getArticleCountSearchByMemberId(searchVO);
+		} else  {
+			allArticleCount = articleDAO.getArticleCountSearchByNickName(searchVO);
+		}*/
+		Paging paging = new Paging();
+		paging.setTotalArticleCount(allArticleCount);
+		paging.setPageNumber(searchVO.getPageNo() + "");
+
+		searchVO.setStartIndex(paging.getStartArticleNumber());
+		searchVO.setEndIndex(paging.getEndArticleNumber());
+
+		
+		List<ArticleVO> articles = articleDAO.getAllArticleList(searchVO);
+
+		ArticleListVO articleList = new ArticleListVO();
+		articleList.setArticleList(articles);
+		articleList.setPaging(paging);
+
+		return articleList;
+	}
+
+	public ArticleVO getOneArticleByArticleId(int articleId) {
+		// 1. article id를 가진 article의 조회수를 update 한다.
+		articleDAO.hitArticle(articleId);
+		// 2. article id로 vo를 받아온다.
+		ArticleVO article = articleDAO.getOneArticleByArticleId(articleId);
+		// 3. article 내용을 반환해준다.
+		article.setFileList(fileDAO.getFileListByArticleId(articleId));
+		article.setReplyList(replyDAO.getReplyListByArticleId(articleId));
+		return article;
+	}
+
+	public ArticleVO recommendArticle(int articleId) {
+		// 1. article id를 가진 article의 추천수를 update 한다.
+		articleDAO.recommendArticle(articleId);
+		// 2. article id로 vo를 받아온다.
+		ArticleVO article = articleDAO.getOneArticleByArticleId(articleId);
+		// 3. article 내용을 반환해준다.
+		return article;
+	}
+
+	public void deleteArticle(int articleId) {
+		articleDAO.deleteArticle(articleId);
+	}
+
+	public int write(ArticleVO article) {
+		String description = article.getDescript();
+		description = description.replaceAll("\n", "<br/>");
+		article.setDescript(description);
+		int articleId = articleDAO.writeArticle(article);
+		return articleId;
+
+	}
+
+	public boolean modifyArticle(HttpServletRequest request) {
+
+		int articleId = Integer.parseInt(request.getParameter("articleId"));
+		ArticleVO originArticle = getOneArticleByArticleId(articleId);
+
+		int changeCount = 0;
+		String title = request.getParameter("title");
+		String description = request.getParameter("description");
+
+		// 원래 글과 수정한 글이 다른가
+		ArticleVO changeArticle = new ArticleVO();
+		if (!originArticle.getTitle().equals(title)) {
+			changeCount++;
+			changeArticle.setTitle(title);
+		}
+		description = description.replaceAll("\n", "<br/>");
+		if (!originArticle.getDescript().equals(description)) {
+			changeCount++;
+			changeArticle.setDescript(description);
+		}
+
+		if (changeCount == 0) {
+			throw new RuntimeException("변경된 사항이 없습니다.");
+		} else {
+			changeArticle.setArticleId(articleId);
+			return articleDAO.updateArticle(changeArticle) > 0;
+		}
+	}
+
+	public void deleteArticles(String[] deleteArticleIds, MemberVO member) {
+		if (member.isAdmin()) {
+			for (String articleId : deleteArticleIds) {
+				articleDAO.deleteArticle(Integer.parseInt(articleId));
+			}
+		}
+	}
+
+}

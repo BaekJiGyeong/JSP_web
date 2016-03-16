@@ -7,6 +7,18 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
+		$("#initSearchBtn").click(function(){
+			location.href = "<c:url value="/list/init"/>";
+		});
+		
+		$("#searchBtn").click(function(){
+			if( $("#searchKeyword").val()=="" ) {
+				alert("검색어를 입력하세요!");
+				return;
+			}
+			movePage('0');
+		});
+		
 		$("#massiveSelectCheckBox").click(function(){
 			 var isChecked = $(this).prop("checked");
 			 $(".deleteArticleId").prop("checked",isChecked);			 
@@ -80,8 +92,23 @@
 	<tr>
 		<td colspan="6" text-align="center">
 			<form id="searchForm">
-			${articles.paging.getPagingList("pageNo","[@]","[이전]", "[다음]", "searchForm")}
+				<div style="text-align:center;">
+				${articles.paging.getPagingList("pageNo","[@]","[이전]", "[다음]", "searchForm")}
+				</div>
+				<div style="text-align:right;">
+					<select id="searchCategory" name="searchCategory">
+						<option value="content">제목+내용</option>
+						<option value="memberId">멤버ID</option>
+						<option value="nickName">닉네임</option>
+					</select>
+					
+					
+					<input type="text" id="searchKeyword" name="searchKeyword" value="${searchVO.searchKeyword}"/>
+					<input type="button" id="searchBtn" value="검색 "/>
+					<input type="button" id="initSearchBtn" value="검색 초기화 "/>
+				</div>
 			</form>
+			
 		</td>
 	</tr>
 	</table>

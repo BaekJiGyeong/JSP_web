@@ -187,4 +187,14 @@
     <servlet-name>MemberManageServlet</servlet-name>
     <url-pattern>/memberManage</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InitSearchServelt</display-name>
+    <servlet-name>InitSearchServelt</servlet-name>
+    <servlet-class>com.ktds.jgbaek.article.web.InitSearchServelt</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitSearchServelt</servlet-name>
+    <url-pattern>/list/init</url-pattern>
+  </servlet-mapping>
 </web-app>

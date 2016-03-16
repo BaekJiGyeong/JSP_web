@@ -5,7 +5,44 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-03-14T13:11:00Z</updated>
+  <updated>2016-03-15T13:34:00Z</updated>
+  <entry>
+    <title>This Week in Spring - March 15th, 2016</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/03/15/this-week-in-spring-march-15th-2016" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2016-03-15:2424</id>
+    <updated>2016-03-15T13:34:00Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring!&lt;/em&gt; What a crazy week it&amp;rsquo;s been since we last talked! I spent a day in San Francisco, Germany, Scotland, and Romania between Monday and Friday last. It&amp;rsquo;s nice this week to be in (warm!) southern California in Los Angeles and San Diego speaking to customers and at a couple of meetups! If you&amp;rsquo;re around, I hope you&amp;rsquo;ll join me for &lt;a href="http://www.meetup.com/Los-Angeles-Java-User-Group/events/228563209/"&gt;the Cloud Native Meetup here in Los Angeles&lt;/a&gt; (tonight!).&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;the &lt;a href="https://nofluffjuststuff.com/home/main"&gt;2016 NFJS tour has just kicked off&lt;/a&gt;, first in Minneapolis. The amazing &lt;a href="http://twitter.com/habuma"&gt;Craig Walls&lt;/a&gt; and &lt;a href="http://twitter.com/mstine"&gt;Matt Stine&lt;/a&gt; be presenting at most of the NFJS shows in 2016 on all manner of topics including Spring Boot, Spring Cloud, Spring Security, Spring Data, Spring Cloud Data Flow, and (later this year) Spring¡¯s new reactive stuff. Make sure to check out the event in your city!&lt;/li&gt;
+  &lt;li&gt;JUnit 5 is coming! &lt;a href="https://dzone.com/articles/junit-5-basics?edition=153261&amp;utm_source=Spotlight&amp;utm_medium=email&amp;utm_content=queue&amp;utm_campaign=java%202016-03-15"&gt;Check out Lukas Eder&amp;rsquo;s quick runthrough of some of the new features in JUnit 5&lt;/a&gt;. JUnit 5 is critical infrastructure code, and it&amp;rsquo;s for this reason that we at Pivotal were happy to help sponsor some of its development.&lt;/li&gt;
+  &lt;li&gt;Get the &lt;a href="https://dzone.com/articles/java-as-new-local-variable-type-inference"&gt;details on the new JEP for type inference in Java&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Integration lead &lt;a href="https://spring.io/blog/2016/03/14/spring-for-apache-kafka-milestone-1-available"&gt;Gary Russell has just announced Spring for Apache Kafka M1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Every now and then people say Spring Boot has &lt;em&gt;too much magic&lt;/em&gt;. (Invariably, others &lt;a href="https://twitter.com/phillip_webb/status/705909774001377280"&gt;will complain it has too much boilerplate&lt;/a&gt;!) I think the key to demystifying Spring Boot&amp;rsquo;s capabilities is to understand its secret sauce, auto-confiuration, which is &lt;em&gt;very&lt;/em&gt; capably explained &lt;a href="http://www.sivalabs.in/2016/03/how-springboot-autoconfiguration-magic.html"&gt;in this epic blog&lt;/a&gt; by our pal K. Siva Prasad Reddy. Also, undestand that you can start the application with &lt;code&gt;--debug=true&lt;/code&gt; and you&amp;rsquo;ll see an enumeration of which auto-configuration conditionals are in play.&lt;/li&gt;
+  &lt;li&gt;project Reactor lead Stephane Maldini talks &lt;a href="https://spring.io/blog/2016/03/11/reactor-core-2-5-becomes-a-unified-reactive-foundation-on-java-8"&gt;about how Reactor fits in with the larger reactive theme of Spring 5&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;make sure to join &lt;a href="https://spring.io/blog/2016/03/09/webinar-spring-boot-and-ratpack-web-framework"&gt;Ratpack contributor Danny Hyun for an upcoming webinar introducing Ratpack and Spring Boot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Make sure to join Spring Cloud Stream lead Marius Bogoevici &lt;a href="https://spring.io/blog/2016/03/09/webinar-stream-processing-in-the-cloud-with-data-microservices"&gt;for a webinar on stream processing in the cloud&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;the incomparable &lt;a href="http://hillert.blogspot.com/2016/03/spring-boot-with-jsp-in-executable-jar.html"&gt;Gunnar Hillert wrote a blog on how to use &lt;code&gt;.jsp&lt;/code&gt; pages with embedded Spring Boot applications&lt;/a&gt;. He does this &lt;em&gt;mainly&lt;/em&gt; to support migrating an existing application; &lt;em&gt;not&lt;/em&gt; recommended for new applications!&lt;/li&gt;
+  &lt;li&gt;want to write &lt;a href="https://developer.atlassian.com/blog/2016/03/connecting-connect-with-spring-boot/"&gt;an Atlassian Connect application using Spring Boot&lt;/a&gt;?&lt;/li&gt;
+  &lt;li&gt;Apress has &lt;a href="http://www.apress.com/9781484214329"&gt;just published &lt;em&gt;Pro Spring Boot&lt;/em&gt;&lt;/a&gt; - check it out!&lt;/li&gt;
+  &lt;li&gt;Sebastian Deleuze&amp;rsquo;s SpringOne2GX 2015 replay on &lt;a href="http://spring.io/blog/2016/03/15/springone2gx-2015-replay-isomorphic-templating-with-spring-boot-nashorn-and-react"&gt;Isomorphic templating with Spring Boot, Nashorn and React&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>SpringOne2GX 2015 replay:  Isomorphic templating with Spring Boot, Nashorn and React</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/03/15/springone2gx-2015-replay-isomorphic-templating-with-spring-boot-nashorn-and-react" />
+    <category term="news" label="News and Events" />
+    <author>
+      <name>Pieter Humphrey</name>
+    </author>
+    <id>tag:spring.io,2016-03-16:2425</id>
+    <updated>2016-03-15T13:33:00Z</updated>
+    <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015.&lt;br/&gt;Speaker: Sebastian Deleuze&lt;br/&gt;Web / JavaScript Track&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/isomorphic-templating-with-spring-boot-nashorn-and-react"&gt;http://www.slideshare.net/SpringCentral/isomorphic-templating-with-spring-boot-nashorn-and-react&lt;/a&gt;&lt;br/&gt;The first part of this talk introduces the upcoming Spring Framework 4.2 Script Templating support,&lt;br/&gt;showing how you can use Nashorn, Jython or JRuby to render templates with Javascript, Python or Ruyby based template engines. We will see how easy you can extend out of the box capabilities on the scripting side.&lt;br/&gt;Based on benchmarks, features available and code samples, we will see if this can be a production ready alternative to templating technologies usually used with Spring MVC like JSP, Velocity, FreeMarker or Thymeleaf.&lt;br/&gt;The second part of the talk will explain how to build an isomorphic application that performs the same templates rendering on client AND server based on Spring Boot, Nashorn and React, the the latest game changer Javascript library released by Facebook. The rendering of Javascript templates is performed initially on server-side thanks to a Spring MVC + Nashorn integration, then enriched on client side with a Server-Sent Events push mechanism.&lt;br/&gt;This kind of isomorphic templating + the disruptive innovation brought by React with his virtual DOM mechanism make it possible to build a new kind of applications : responsive, with a great UX while being accessible.&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/cPxq66nXsf4" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
+  </entry>
   <entry>
     <title>Spring for Apache Kafka Milestone 1 Available</title>
     <link rel="alternate" href="https://spring.io/blog/2016/03/14/spring-for-apache-kafka-milestone-1-available" />
@@ -463,30 +500,5 @@ public class FooService {&#xD;
 &lt;p&gt;Detailed new and noteworthy notes can be found here: &lt;a href="http://docs.spring.io/sts/nan/v373/NewAndNoteworthy.html"&gt;STS 3.7.3 New &amp;amp; Noteworthy&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;STS 3.8.0 is scheduled to ship in early July 2016, based on Eclipse Neon (4.6).&lt;/p&gt;
 &lt;p&gt;Enjoy!&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Webinar Replay: Creating a PageRank Analytics Platform Using Spring Boot Microservices</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/03/01/webinar-replay-creating-a-pagerank-analytics-platform-using-spring-boot-microservices" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-03-01:2408</id>
-    <updated>2016-03-01T09:05:00Z</updated>
-    <content type="html">&lt;p&gt;Speaker: Kenny Bastani&lt;br/&gt;Slides: &lt;a href="https://speakerdeck.com/kbastani/creating-a-pagerank-analytics-platform-using-spring-boot-microservices"&gt;https://speakerdeck.com/kbastani/creating-a-pagerank-analytics-platform-using-spring-boot-microservices&lt;/a&gt;&lt;br/&gt;Guided Tutorial from webinar content: &lt;a href="http://www.kennybastani.com/2016/01/spring-boot-graph-processing-microservices.html"&gt;http://www.kennybastani.com/2016/01/spring-boot-graph-processing-microservices.html&lt;/a&gt;&lt;br/&gt;Reference Application from Webinar: &lt;a href="https://github.com/kbastani/spring-boot-graph-processing-example"&gt;https://github.com/kbastani/spring-boot-graph-processing-example&lt;/a&gt;&lt;br/&gt;Graph processing platform: &lt;a href="https://github.com/neo4j-contrib/neo4j-mazerunner"&gt;https://github.com/neo4j-contrib/neo4j-mazerunner&lt;/a&gt; &lt;/p&gt;
-&lt;p&gt;This webinar introduces you to a sample application that combines multiple microservices with a graph processing platform to rank communities of users on Twitter. The problem we¡¯re going to solve is how to discover communities of influencers on Twitter using a set of seed profiles as inputs. To solve this problem without a background in machine learning or social network analytics might be a bit of a stretch, but we¡¯re going to take a stab at it using a little bit of computer science history. We¡¯re going to use a collection of popular tools as a part of this article¡¯s sample application. The tools we¡¯ll use, in the order of importance, will be: Spring Boot, Neo4j, Apache Spark, Docker, RabbitMQ. While there are some missing pieces, such as securing REST API access, and mapping device volumes to the containers, these kinds of important topics will be covered in future webinars.&lt;/p&gt;
-&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/OlUobQ6pJ6M" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>Webinar Replay: Spring Boot Authentication... and More!</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/03/01/webinar-replay-spring-boot-authentication-and-more" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-03-01:2407</id>
-    <updated>2016-03-01T09:00:00Z</updated>
-    <content type="html">&lt;p&gt;Guest Speaker: Micah Silverman, Java Developer Evangelist, Stormpath&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/stormpath/spring-boot-authenticationand-more"&gt;http://www.slideshare.net/stormpath/spring-boot-authenticationand-more&lt;/a&gt;&lt;br/&gt;Join Stormpath Java Developer Evangelist Micah Silverman for a technical overview of the common pain points with Java authentication. We&amp;rsquo;ll cover how to solve them with Stormpath in a Spring Boot application, and demonstrate how to quickly add a complete user management system to your Spring Boot app. By the end of this webinar, you¡¯ll be on your way to a fully functioning Spring Boot app backed by Stormpath. Topics Covered: Authentication Pain Points in Java Stormpath, Spring Boot, and Your Architecture Demo: Auth in Spring Boot, with these features: A complete user registration and login system Pre-built login screens Password reset workflows Group-based authorization Advanced user features: API authentication, Single Sign-On, social login, and more Technical Q&amp;amp;A&lt;/p&gt;
-&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/1jwrK9ehYdw" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
   </entry>
 </feed>

@@ -19,7 +19,6 @@
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
 <fullyQualifiedTypeName name="java.util.regex.Matcher"/>
-<fullyQualifiedTypeName name="com.ktds.jgbaek.member.vo.MemberVO"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
 <fullyQualifiedTypeName name="com.ktds.jgbaek.article.vo.ArticleSearchVO"/>
 <fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
@@ -35,5 +34,7 @@
 <fullyQualifiedTypeName name="com.ktds.jgbaek.file.vo.FileVO"/>
 <fullyQualifiedTypeName name="com.ktds.jgbaek.util.DownloadUtil"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="com.ktds.jgbaek.member.vo.MemberVO"/>
+<fullyQualifiedTypeName name="com.ktds.jgbaek.util.Root"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>

@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="leftMenu">
 	<ul>
 		<li>최근에 등록된 게시글 보기</li>
 		<li>차단된 사용자가 등록한 게시글 보기</li>
 		<li>차단된 게시글 보기</li>
 		<li>신고가 접수된 게시글 보기</li>
-		<li>전체 게시글 보기</li>
+		<li>
+			<a href="<c:url value="/list"/>">전체 게시글 보기</a>
+		</li>
 	</ul>
 </div>
