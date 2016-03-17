@@ -8,14 +8,14 @@
 	$(document).ready(function(){
 		$("#massiveSelectCheckBox").click(function(){
 			 var isChecked = $(this).prop("checked");
-			 $(".deleteMemberId").prop("checked",isChecked);			 
+			 $(".deleteMemberIds").prop("checked",isChecked);			 
 		});
 		
 		
-		$("#massiveDeleteBtn").click(function(){
+		$("#deleteBtn").click(function(){
 			var isChecked = false;
 
-			$(".deleteMemberId").each(function(index,data){
+			$(".deleteMemberIds").each(function(index,data){
 				
 				if (data.checked ) {
 					isChecked = data.checked
@@ -29,7 +29,7 @@
 			if(confirm("정말 삭제하시겠습니까?")){
 				var form=$("#massiveDeleteForm");
 				form.attr("method", "POST");
-				form.attr("action", "<c:url value="/massiveDelete"/>");
+				form.attr("action", "<c:url value="/memberDelete"/>");
 				form.submit();
 			}
 		});
@@ -56,28 +56,26 @@
 	<c:forEach items="${ members }" var="members">
 		<tr>
 			<td>
-				<input type="checkbox" class="deleteMemberId"
-						name = "deleteMemberId"
+				<input type="checkbox" class="deleteMemberIds"
+						name = "deleteMemberIds"
 						value ="${members.memberId }"/>
 			</td>
-			<td>${ members.memberId }</td>
+			<td>
+			<a href="<c:url value="/detailMember?memberId=${ members.memberId }"/>">
+			${ members.memberId }
+			</a>
+			</td>
 			<td>${ members.nickName }</td>
 			<td>${ members.password }</td>
 			<td>${ members.email}</td>
 			<td>${ members.isAdmin}</td>
 	</tr>
 	</c:forEach>
-	</form>
-	
+	</form>	
 	</table>
 	<br/>
 	
-	
-	<a href="<c:url value="/write"/>"><img src="<c:url value="/resource/img/write.png"/>" id="btnWrite" /></a>
-	<a href="<c:url value="/logout"/>"><img src="<c:url value="/resource/img/exit.png"/>" id="btnExit" /></a>
-	<img src="<c:url value="/resource/img/trashcan.png"/>" id="massiveDeleteBtn" width=125px height=125px; />
-	
-	
-	</br>
+	<a href="<c:url value="/write"/>"><img src="<c:url value="/resource/img/write.png"/>" id="writeBtn" /></a>
+	<img src="<c:url value="/resource/img/trashcan.png"/>" id="deleteBtn" width=125px height=125px; />
 </div>
 </body>

@@ -1,0 +1,5 @@
+package com.ktds.jgbaek.history.dao;
+
+public class OperationHistoryDAO {
+
+}

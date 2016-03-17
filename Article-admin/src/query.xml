@@ -14,6 +14,11 @@
 			AND		PASSWORD = ?
 			AND	IS_ADMIN = 'Y'
 		</getMemberByIdAndPassword>
+		<getOneMemberByMemberId>
+			SELECT	*
+			FROM	MEMBERS
+			WHERE	MEMBER_ID = ?
+		</getOneMemberByMemberId>
 		
 		<addNewMember>
 		INSERT INTO MEMBERS (
@@ -32,7 +37,18 @@
 			SELECT	*
 			FROM	MEMBERS
 		</getAllMember>
-			
+		<deleteMember>
+			DELETE 
+			FROM   MEMBERS
+			WHERE  MEMBER_ID = ?		
+		</deleteMember>
+		<updateMember>
+		UPDATE	MEMBERS
+		SET		NICK_NAME=?
+				, PASSWORD=?
+				, EMAIL=?
+		WHERE	MEMBER_ID=?
+		</updateMember>
 	</member>
 	
 	<article>

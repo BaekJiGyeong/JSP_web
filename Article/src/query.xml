@@ -261,5 +261,29 @@
 			AND		GROUP_ID = ?
 		</updateOrderNoByGroupId>
 	</reply>
+	<operationHistory>
+		<insertHistory>
+		INSERT INTO ARTICLE.OPER_HIST (
+										   HISTORY_ID
+										   , IP
+										   , MEMBER_ID
+										   , CRT_DT
+										   , URL
+										   , ACTION_CODE
+										   , DESCRIPTION
+										   , ETC
+										) 
+		VALUES ( 
+			HISTORY_ID_SEQ.NEXTVAL
+			, ?
+			, ?
+			, SYSDATE
+			, ?
+			, ?
+			, ?
+			, ?
+			 )
+		</insertHistory>
+	</operationHistory>
 	
 </query>

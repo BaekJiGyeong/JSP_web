@@ -197,4 +197,34 @@
     <servlet-name>InitSearchServelt</servlet-name>
     <url-pattern>/list/init</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MemberDeleteServlet</display-name>
+    <servlet-name>MemberDeleteServlet</servlet-name>
+    <servlet-class>com.ktds.jgbaek.member.web.MemberDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberDeleteServlet</servlet-name>
+    <url-pattern>/memberDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DetailMemberServlet</display-name>
+    <servlet-name>DetailMemberServlet</servlet-name>
+    <servlet-class>com.ktds.jgbaek.member.web.DetailMemberServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DetailMemberServlet</servlet-name>
+    <url-pattern>/detailMember</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoModifyMemberServlet</display-name>
+    <servlet-name>DoModifyMemberServlet</servlet-name>
+    <servlet-class>com.ktds.jgbaek.member.web.DoModifyMemberServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoModifyMemberServlet</servlet-name>
+    <url-pattern>/doModifyMember</url-pattern>
+  </servlet-mapping>
 </web-app>

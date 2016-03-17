@@ -97,7 +97,7 @@
 				</div>
 				<div style="text-align:right;">
 					<select id="searchCategory" name="searchCategory">
-						<option value="content">제목+내용</option>
+						<option value="content" >제목+내용</option>
 						<option value="memberId">멤버ID</option>
 						<option value="nickName">닉네임</option>
 					</select>

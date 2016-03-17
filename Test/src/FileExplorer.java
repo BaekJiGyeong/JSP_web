@@ -1,0 +1,27 @@
+import java.io.File;
+
+public class FileExplorer {
+	public static void main(String[] args){
+		String dir = "C:\\apache-tomcat-8.0.32";
+		FileExplorer fe = new FileExplorer();
+		fe.printDirectories(dir, 0);
+	}
+	
+	public void printDirectories(String path, int depth){
+		File f = new File(path);
+		File[] items = f.listFiles();
+		for (File file : items) {
+			for (int i = 0; i < depth; i++) {
+				System.out.print(" ");
+			}
+			System.out.println(file.getAbsolutePath());
+			
+			if(file.isDirectory()){
+				printDirectories(file.getAbsolutePath(), ++depth);
+				--depth;
+			}
+		}
+		
+	}
+
+}

@@ -77,7 +77,7 @@ public class MemberDAO {
 				member.setPassword(rs.getString("PASSWORD"));
 				member.setEmail(rs.getString("EMAIL"));
 				member.setIsAdmin(rs.getString("IS_ADMIN"));
-				
+
 				members.add(member);
 			}
 			return members;
@@ -118,6 +118,89 @@ public class MemberDAO {
 			closeDB(conn, stmt, rs);
 		}
 		return member;
+	}
+
+	public void deleteMember(String memberId) {
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ARTICLE", "ARTICLE");
+			String query = XML.getNodeString("//query/member/deleteMember/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, memberId);
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, null);
+		}
+
+	}
+
+	public int updateMember(MemberVO changeMember) {
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ARTICLE", "ARTICLE");
+			String query = XML.getNodeString("//query/member/updateMember/text()");
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, changeMember.getNickName());
+			stmt.setString(2, changeMember.getPassword());
+			stmt.setString(3, changeMember.getEmail());
+			stmt.setString(4, changeMember.getMemberId());
+			
+			
+
+			rs = stmt.executeQuery();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+
+		return 1;
+	}
+
+	public MemberVO getOneMemberByMemberId(String memberId) {
+		// 1. DriverLoading
+		loadOracleDriver();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		MemberVO member = new MemberVO();
+		try {
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ARTICLE", "ARTICLE");
+			String query = XML.getNodeString("//query/member/getOneMemberByMemberId/text()");
+			stmt = conn.prepareStatement(query);
+
+			// SQL Parameter Mapping
+			// 몇번째 물음표를 어디파라미터에 넣을 것인가?
+			stmt.setString(1, memberId);
+
+			rs = stmt.executeQuery();
+			if (rs.next()) {
+				member.setMemberId(rs.getString("MEMBER_ID"));
+				member.setNickName(rs.getString("NICK_NAME"));
+				member.setPassword(rs.getString("PASSWORD"));
+				member.setEmail(rs.getString("EMAIL"));
+				member.setIsAdmin(rs.getString("IS_ADMIN"));
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		} finally {
+			closeDB(conn, stmt, rs);
+		}
+		return member;
+
 	}
 
 	private void closeDB(Connection conn, PreparedStatement stmt, ResultSet rs) {

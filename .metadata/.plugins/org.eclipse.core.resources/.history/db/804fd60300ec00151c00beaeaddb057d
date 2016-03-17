@@ -1,0 +1,9 @@
+
+public class Main {
+	public static void main(String[] args) {
+		ItemVO youtube = new ItemVO();
+		youtube.setName("유튜브");
+		youtube.setDepth(0);
+		youtube.setCategory(true);
+	}
+}

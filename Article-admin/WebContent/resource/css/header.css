@@ -49,7 +49,12 @@ div#header div {
 	float: left;
 }
 
-div#listcss {
+div#listcss{
+	float:left;
+	background-color: #ffa4d1;
+	padding : 10px;
+}
+div#members {
 	float:left;
 	background-color: #ffa4d1;
 	padding : 10px;
