@@ -1,0 +1,27 @@
+package com.ktds.jgbaek.favo.biz;
+
+import com.ktds.jgbaek.favo.dao.FavoriteDAO;
+import com.ktds.jgbaek.favo.vo.FavoVO;
+
+public class FavoriteBiz {
+
+	private FavoriteDAO favoriteDAO;
+	public FavoriteBiz(){
+		favoriteDAO = new FavoriteDAO();
+	}
+	
+	public boolean isExistFavoriteData(FavoVO favoriteVO){
+		return favoriteDAO.selectFavoriteCount(favoriteVO) > 0;
+	}
+	
+	public void insertFavoriteData(FavoVO favoriteVO){
+		if(isExistFavoriteData(favoriteVO)){
+			favoriteDAO.deleteFavorite(favoriteVO);
+		}
+		else {
+			favoriteDAO.insertFavorite(favoriteVO);
+		}
+	}
+	
+	
+}

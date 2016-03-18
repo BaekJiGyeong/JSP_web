@@ -32,9 +32,12 @@
 <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 <fullyQualifiedTypeName name="com.ktds.jgbaek.file.vo.FileVO"/>
 <fullyQualifiedTypeName name="com.ktds.jgbaek.util.DownloadUtil"/>
-<fullyQualifiedTypeName name="com.ktds.jgbaek.member.vo.MemberVO"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="com.ktds.jgbaek.util.Root"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.ktds.jgbaek.history.vo.OperationHistoryVO"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="com.ktds.jgbaek.member.vo.MemberVO"/>
+<fullyQualifiedTypeName name="com.ktds.jgbaek.history.vo.Description"/>
+<fullyQualifiedTypeName name="com.ktds.jgbaek.history.vo.ActionCode"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>

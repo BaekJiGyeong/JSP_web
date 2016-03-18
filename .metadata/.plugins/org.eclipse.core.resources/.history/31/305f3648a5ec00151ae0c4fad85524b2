@@ -1,0 +1,5 @@
+package com.ktds.jgbaek.favo.dao;
+
+public class FavoriteDAO {
+
+}

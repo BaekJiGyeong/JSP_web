@@ -10,16 +10,8 @@
 
 	$(document).ready(function() {
 		$("#addNewActor").click(function(){
-			// 유효성 검사 혹은 Validation Check
-			/*if ($("#actorName").val() == ""){
-				alert("배우의 이름을 입력하세요!");
-				return;
-			}*/
-			
-			
+				
 			var form = $("#addNewActorForm");
-			// jQueryObject.attr("속성명", "속성 값");
-			// attr = attribute
 			form.attr("method", "POST");
 			form.attr("action", "/Movie/addNewActorAction");
 			form.submit();

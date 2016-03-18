@@ -80,6 +80,7 @@ public class MemberBiz {
 	}
 
 	public void modifyMember(HttpServletRequest request) {
+		
 		String memberId = request.getParameter("memberId");
 		MemberVO member = this.getOneMemberByMemberId(memberId);
 
@@ -115,4 +116,5 @@ public class MemberBiz {
 		}
 		
 	}
+
 }

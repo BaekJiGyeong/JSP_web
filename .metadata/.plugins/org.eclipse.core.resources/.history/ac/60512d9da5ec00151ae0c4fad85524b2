@@ -1,0 +1,10 @@
+package com.ktds.jgbaek.favo.dao;
+
+import com.ktds.jgbaek.favo.vo.FavoVO;
+
+public class FavoriteDAO {
+	public int selectFavoriteCount(FavoVO favoriteVO){
+		
+	}
+
+}

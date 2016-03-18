@@ -4,8 +4,10 @@
 <%@page import="com.ktds.jgbaek.history.vo.ActionCode"%>
 <%@page import="com.ktds.jgbaek.history.vo.BuildDescription"%>
 <%@page import="com.ktds.jgbaek.history.vo.Description"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
 <%
 
 	MemberVO member = (MemberVO)session.getAttribute("_MEMBER_");	

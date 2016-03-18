@@ -11,10 +11,39 @@
 <script type="text/javascript" src="/resource/js/jquery-1.12.1.js"></script>
 <script type="text/javascript">
 
-
-	$(document).ready( function() {		
-		
-		$(".hide").hide();
+	$(document).ready( function() {				
+		$(".hide").hide();		
+		$("#favorite").click(function(){			
+			
+			$.post(
+					"/favorite"
+					, {"articleId" : "${article.articleId}"}	
+					, function(data){
+												
+						var jsonData3 = {};
+						try {
+							jsonData3 = JSON.parse(data);
+						}catch(e) {
+							jsonData3.result = false;
+						}
+						console.log(jsonData3);
+						
+						if ( jsonData3.result ){
+							var text = $("#favorite").text();
+							if (jsonData3.isFavorite){
+								$("#favorite").text("♥");
+							}
+							else if (text == "♥"){
+									$("#favorite").text("♡");
+							} 
+						}
+						else {
+							/* alert("세션이 만료되었습니다. 다시 로그인해주세요.");
+							location.href = "/"; */
+						}
+					}
+			);
+		});
 		
 		$("#list").click( function() {
 			location.href = "/list";
@@ -102,7 +131,13 @@
 		<td>${ article.hits }</td>
 		<td>${ article.recommends }</td>
 	</tr>
-		<th>제목</th>
+		<th>제목
+		<c:if test="${isExistsFavoriteData }">
+			<span id="favorite" syle="color:red;">♥</span>
+			</c:if>
+			<c:if test="${!isExistsFavoriteData }">
+			<span id="favorite"  syle="color:red;">♡</span>
+			</c:if></th>
 		<td colspan="5">${article.title}</td>
 	<tr>
 		<th>내용</th>

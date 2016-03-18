@@ -286,4 +286,33 @@
 		</insertHistory>
 	</operationHistory>
 	
+	<favorite>
+		<insertFavorite>
+			INSERT INTO ARTICLE.FAVO (
+									    FAVO_ID
+									   , ARTICLE_ID
+									   , MEMBER_ID
+									   , CRT_DT
+									 ) 
+			VALUES 					( 
+										FAVO_ID_SEQ.NEXTVAL
+										, ?
+										, ?
+										, SYSDATE
+									)
+		</insertFavorite>
+		<deleteFavorite>
+			DELETE	
+			FROM	FAVO
+			WHERE	ARTICLE_ID=?
+			AND		MEMBER_ID=?
+		</deleteFavorite>
+		<selectFavoriteCount>
+			SELECT	COUNT(FAVO_ID)
+			FROM	FAVO
+			WHERE	ARTICLE_ID=?
+			AND		MEMBER_ID=?
+		</selectFavoriteCount>
+	</favorite>
+	
 </query>

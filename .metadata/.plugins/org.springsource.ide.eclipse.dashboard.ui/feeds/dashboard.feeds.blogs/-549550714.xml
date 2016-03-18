@@ -5,7 +5,51 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-03-15T13:34:00Z</updated>
+  <updated>2016-03-17T12:50:30Z</updated>
+  <entry>
+    <title>Spring Session 1.2.0 RC1 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/03/17/spring-session-1-2-0-rc1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Rob Winch</name>
+    </author>
+    <id>tag:spring.io,2016-03-17:2428</id>
+    <updated>2016-03-17T12:50:30Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the community, I&amp;rsquo;m pleased to announce the release of Spring Session 1.2.0.RC1. The release can be found in the &lt;a href="https://github.com/spring-projects/spring-framework/wiki/Spring-repository-FAQ"&gt;Spring Milestone repository&lt;/a&gt; (&lt;a href="https://repo.spring.io/milestone)"&gt;https://repo.spring.io/milestone)&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#change-log" class="anchor" name="change-log"&gt;&lt;/a&gt;Change Log&lt;/h2&gt;
+&lt;p&gt;This release includes nearly 30 issues with some exciting new features. You can find a complete list of changes in the &lt;a href="https://github.com/spring-projects/spring-session/issues?utf8=%E2%9C%93&amp;q=milestone%3A1.2.0.RC1"&gt;change log&lt;/a&gt;. The highlights can be found in &lt;a href="http://docs.spring.io/spring-session/docs/1.2.0.RC1/reference/html5/#what-s-new-in-1-2"&gt;What&amp;rsquo;s New in 1.2&lt;/a&gt;&lt;/p&gt;&lt;h2&gt;&lt;a href="#contributions" class="anchor" name="contributions"&gt;&lt;/a&gt;Contributions&lt;/h2&gt;
+&lt;p&gt;I continue to be amazed with the growing Spring Session community. It is because of our community that we were able to do this release within a month of 1.1.0 going GA. A special thank you to all those who contributed Pull Requests for this release:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/371"&gt;#371&lt;/a&gt; - Add MongoOperationsSessionRepository. Thanks &lt;a href="https://github.com/jkubrynski"&gt;Jakub Kubry?ski&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/379"&gt;#379&lt;/a&gt; - Add JdbcOperationsSessionRepository. Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/397"&gt;#397&lt;/a&gt; - Fix minor documentation errors. Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/402"&gt;#402&lt;/a&gt; - @DirtiesContext for GemFire integration tests. Thanks &lt;a href="https://github.com/jxblum"&gt;John Blum&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/404"&gt;#404&lt;/a&gt; - Polish GemFire. Thanks &lt;a href="https://github.com/jxblum"&gt;John Blum&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/413"&gt;#413&lt;/a&gt; - Add Checkstyle to build. Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/414"&gt;#414&lt;/a&gt; - Fix bad reference in IndexDocTests. Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/418"&gt;#418&lt;/a&gt; - Add JDBC documentation. Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/421"&gt;#421&lt;/a&gt; - Fix JdbcOperationsSessionRepository session cleanup. Thanks &lt;a href="https://github.com/erindru"&gt;Erin Drummond&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/425"&gt;#425&lt;/a&gt; - JacksonMongoSessionConverter. Thanks &lt;a href="https://github.com/jkubrynski"&gt;Jakub Kubry?ski&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/426"&gt;#426&lt;/a&gt; - SessionRepositoryFilter caches null session lookup. Thanks &lt;a href="https://github.com/oyvindhorneland"&gt;¨ªyvind Horneland&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/428"&gt;#428&lt;/a&gt; - Fix incorrect link in What&amp;rsquo;s new section. Thanks &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/429"&gt;#429&lt;/a&gt; - Update to Sonarqube Plugin. Thanks &lt;a href="https://github.com/eddumelendez"&gt;Edd? Mel?ndez Gonzales&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/430"&gt;#430&lt;/a&gt; - Extend Mongo documentation. Thanks &lt;a href="https://github.com/jkubrynski"&gt;Jakub Kubry?ski&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-session/pull/433"&gt;#433&lt;/a&gt; - JdkMongoSessionConverter supports custom ClassLoader. Thanks &lt;a href="https://github.com/jkubrynski"&gt;Jakub Kubry?ski&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-session/"&gt;Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-session/docs/1.2.0.RC1/reference/html5/"&gt;Documentation&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-session/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-session"&gt;Help&lt;/a&gt; &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Session 1.1.1 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/03/17/spring-session-1-1-1-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Rob Winch</name>
+    </author>
+    <id>tag:spring.io,2016-03-17:2429</id>
+    <updated>2016-03-17T12:45:35Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the community, I&amp;rsquo;m pleased to announce the release of Spring Session 1.1.1.RELEASE. The release can be found in Maven Central.&lt;/p&gt;&lt;h2&gt;&lt;a href="#change-log" class="anchor" name="change-log"&gt;&lt;/a&gt;Change Log&lt;/h2&gt;
+&lt;p&gt;This release includes a number of minor fixes and upgrade is recommended for anyone currently using Spring Session. You can find details of the fixes in the &lt;a href="https://github.com/spring-projects/spring-session/issues?q=milestone%3A1.1.1"&gt;changelog&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-session/"&gt;Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-session/docs/1.1.1.RELEASE/reference/html5/"&gt;Documentation&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-session/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-session"&gt;Help&lt;/a&gt; &lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>This Week in Spring - March 15th, 2016</title>
     <link rel="alternate" href="https://spring.io/blog/2016/03/15/this-week-in-spring-march-15th-2016" />
@@ -455,33 +499,5 @@ public class FooService {&#xD;
     <updated>2016-03-01T12:12:00Z</updated>
     <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015.&lt;br/&gt;Speakers: Gunnar Hillert, Michael Minella&lt;br/&gt;Data / Integration Track&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/who-needs-batch"&gt;http://www.slideshare.net/SpringCentral/who-needs-batch&lt;/a&gt;&lt;br/&gt;Stream processing gets quite a bit of the press these days. Projects like Spark, Samza/Kafka, Google Cloud Dataflow, Apache Flink, and Amazon Kinesis bring the question of can we accomplish what we need without a batch component. This talk will take a hard look at if we still need batch these days, what that might look like in a modern development platform, and where Spring fits into it all.&lt;/p&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/atK1YDL1dLE" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne2GX 2015 replay: Spring Framework - the ultimate configuration battle</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/03/01/springone2gx-2015-replay-spring-framework-the-ultimate-configuration-battle" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-03-01:2411</id>
-    <updated>2016-03-01T12:02:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015.&lt;br/&gt;Speakers: Viktor Gamov, Leonid Igolnik, Baruch Sadogursky&lt;br/&gt;Core Spring Track&lt;br/&gt;Slides: No slides all demo&lt;/p&gt;
-&lt;p&gt;Almost every major version of Spring framework introduced a new way to configure the context: XML, Annotations, Java Config, Groovy&amp;hellip; What&amp;rsquo;s next, and, more important - why so many?! And how to know what to use and when? In this session Baruch, Viktor and Leonid will try to find the silver bullet, and you will have a chance to vote for the best feature implementations or even make a bet of the winner!&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/LHV63gRIU5M" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>SpringOne2GX 2015 replay: Cloud Native Dataflow Orchestration</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/03/01/springone2gx-2015-replay-cloud-native-dataflow-orchestration" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-03-01:2410</id>
-    <updated>2016-03-01T11:48:00Z</updated>
-    <content type="html">&lt;p&gt;Recorded at SpringOne2GX 2015.&lt;br/&gt;Speakers: Mark Fisher &amp;amp; Patrick Peralta&lt;br/&gt;Big Data Track&lt;br/&gt;Slides: &lt;a href="http://www.slideshare.net/SpringCentral/cloud-native-data-flow-orchestration"&gt;http://www.slideshare.net/SpringCentral/cloud-native-data-flow-orchestration&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The Spring Cloud Stream and Spring Cloud Task projects provide a simple and powerful framework for creating cloud native data microservices for stream and batch processing. Each microservice in these distributed systems consists of a stand-alone Spring Boot application.&lt;/p&gt;
-&lt;p&gt;While it is possible to define data pipelines across these microservice apps manually, Spring Cloud Data Flow is an integrated orchestration layer that provides a highly productive deployment and management experience for development and ops. Streams and tasks are defined using the same DSL and shell/UI introduced with Spring XD. Furthermore, a pluggable runtime SPI allows Spring Cloud Data Flow to coordinate these applications across a variety of distributed runtime platforms including Apache YARN, Lattice, and Cloud Foundry.&lt;/p&gt;
-&lt;p&gt;This session will provide an overview of the Spring Cloud Data Flow architecture ? including how it evolved out of Spring XD. Additionally, a streaming application will be deployed on each of the supported runtimes in a live demo.&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/eWIyVPF1oAA	" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</content>
   </entry>
 </feed>

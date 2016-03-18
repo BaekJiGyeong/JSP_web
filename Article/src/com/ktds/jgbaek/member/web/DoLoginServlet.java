@@ -50,8 +50,25 @@ public class DoLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String memberId = request.getParameter("userId");
-		String memberPassword = request.getParameter("userPw");
-	
+		String memberPassword = request.getParameter("userPassword");
+		String facebookLogin = request.getParameter("facebookLogin");
+
+		System.out.println(memberId);
+		System.out.println(memberPassword);
+		
+		if ( facebookLogin != null && facebookLogin.equalsIgnoreCase("Y") ){
+			MemberVO facebookMember = new MemberVO();
+			facebookMember.setMemberId(memberId);
+			facebookMember.setNickName(memberPassword);
+
+			HttpSession session = request.getSession();
+			session.setAttribute("_MEMBER_", facebookMember);
+			session.setAttribute("_LOGIN_PATH_", "facebook");
+			
+			response.sendRedirect("/list");;
+			return;
+		}
+		
 
 		MemberVO loginMember = new MemberVO();
 		loginMember.setMemberId(memberId);
