@@ -14,6 +14,12 @@ $(document).ready(function() {
 		form.attr("action", "/addNewMember");
 		form.submit();
 	});		
+	$("#memberId").keyup(function(event) {
+		var value = new String(event.currentTarget.value);
+		$('#input2').val(value);
+	});	
+	
+	
 
 });
 	
@@ -26,6 +32,7 @@ $(document).ready(function() {
 			<td>memberId</td>
 			<td>
 				<input type="text" id="memberId" name="memberId" style="width:250px"/>
+				<input type="text" id="input2" name="input2" style="width:250px"/>
 			</td>
 		</tr>
 		<tr>

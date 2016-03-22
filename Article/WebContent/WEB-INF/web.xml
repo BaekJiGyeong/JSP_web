@@ -177,4 +177,14 @@
     <servlet-name>FavoriteServlet</servlet-name>
     <url-pattern>/favorite</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IdCheckRepetitionServlet</display-name>
+    <servlet-name>IdCheckRepetitionServlet</servlet-name>
+    <servlet-class>com.ktds.jgbaek.member.web.IdCheckRepetitionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IdCheckRepetitionServlet</servlet-name>
+    <url-pattern>/idCheckRepetition</url-pattern>
+  </servlet-mapping>
 </web-app>

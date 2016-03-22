@@ -1,0 +1,10 @@
+127.0.0.1 - - [21/Mar/2016:11:06:33 +0900] "GET / HTTP/1.1" 200 3140
+0:0:0:0:0:0:0:1 - - [21/Mar/2016:11:08:28 +0900] "GET /admin HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [21/Mar/2016:11:08:29 +0900] "GET /admin/ HTTP/1.1" 200 2211
+0:0:0:0:0:0:0:1 - - [21/Mar/2016:11:08:29 +0900] "GET /admin/resource/css/login.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [21/Mar/2016:11:08:29 +0900] "GET /admin/resource/img/icon.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [21/Mar/2016:11:08:29 +0900] "GET /admin/resource/js/jquery-1.12.1.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [21/Mar/2016:11:08:29 +0900] "GET /admin/resource/css/header.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [21/Mar/2016:11:08:29 +0900] "GET /admin/resource/img/login.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [21/Mar/2016:11:08:29 +0900] "GET /admin/resource/img/join.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [21/Mar/2016:11:08:35 +0900] "GET / HTTP/1.1" 200 3140
